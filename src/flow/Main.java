@@ -25,6 +25,7 @@ public class Main extends JFrame implements MainContract.View {
     JRadioButton soldierRecruitment;
     String selectedBuilding;
     JComboBox<String> buildingStore;
+    ButtonGroup group;
 
     public Main() {
         setTitle("The Settlers");
@@ -47,6 +48,8 @@ public class Main extends JFrame implements MainContract.View {
             int y = Integer.valueOf(s[1]);
 
             presenter.onTableItemClicked(new Position(x, y));
+
+            group.clearSelection();
 
             repaint();
         };
@@ -82,20 +85,17 @@ public class Main extends JFrame implements MainContract.View {
         toBuild = new JRadioButton("Építés");
         soldierRecruitment = new JRadioButton("Katona toborzás");
         JRadioButton soldierMove = new JRadioButton("Katona mozgatás");
-        ButtonGroup group = new ButtonGroup();
+        group = new ButtonGroup();
         group.add(toBuild);
         group.add(soldierRecruitment);
-        group.add(soldierMove);
         toBuild.setBounds(750, 330, 100, 40);
         soldierRecruitment.setBounds(860, 330, 150, 40);
-        soldierMove.setBounds(1020, 330, 200, 40);
 
         roundTitle.setBounds(750, 300, 200, 20);
 
         root.add(roundTitle);
         root.add(toBuild);
         root.add(soldierRecruitment);
-        root.add(soldierMove);
 
         JButton doIt = new JButton("Építs - Toborozz!");
 

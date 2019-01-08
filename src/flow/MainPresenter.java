@@ -35,10 +35,10 @@ public class MainPresenter implements MainContract.Presenter {
             } else if (view.getSelectedBuilding().equals("Bank")) {
                 game.toBuildBank(position);
                 view.updateCell(position, game.getCell(position));
-            } else if (view.getSoldierRecruitment().isSelected()) {
-                game.toRecruit(position);
-                view.updateCell(position, game.getCell(position));
             }
+        } else if (view.getSoldierRecruitment().isSelected()) {
+            game.toRecruit(position);
+            view.updateCell(position, game.getCell(position));
         } else {
             if (selectedPosition != null) {
                 game.moveSoldier(selectedPosition, position);
