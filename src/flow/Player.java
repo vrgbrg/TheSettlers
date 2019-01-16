@@ -1,48 +1,57 @@
 package flow;
 
-
 public class Player {
 
-    private String name;
-    private String color;
-    private boolean winner;
-    private int gold = 1000;
+    private final String name;
+    private int roundPoint;
+    private double gold;
+    private int actualPopulation;
+    private int maxPopulation;
 
-    public Player(String name, String color) {
+    public Player(String name) {
+
         this.name = name;
-        this.color = color;
+        this.gold = 1000;
+        this.roundPoint = 3;
+        this.actualPopulation = random(500, 1000);
+
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getRoundPoint() {
+        return roundPoint;
     }
 
-    public String getColor() {
-        return color;
+    public void changeRoundPoint(int point) {
+        roundPoint -= point;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void changeGold(double minus) {
+        gold -= minus;
     }
 
-    public boolean isWinner() {
-        return winner;
-    }
-
-    public void setWinner(boolean winner) {
-        this.winner = winner;
-    }
-
-    public int getGold() {
+    public double getGold() {
         return gold;
     }
 
-    public void setGold(int gold) {
-        this.gold = gold;
+    public int getActualPopulation() {
+        return actualPopulation;
+    }
+
+    public int getMaxPopulation() {
+        return maxPopulation;
+    }
+
+    private int random(int min, int max) {
+        int random = (int)(Math.random() * (max-min)+1 + min);
+        return random;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
-

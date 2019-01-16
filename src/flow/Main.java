@@ -1,10 +1,12 @@
 package flow;
 
+import flow.cells.CellItem;
+import flow.cells.TownHall;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.util.List;
 
 public class Main extends JFrame implements MainContract.View {
 
@@ -19,13 +21,12 @@ public class Main extends JFrame implements MainContract.View {
 
     private MainContract.Presenter presenter;
 
-    private JPanel root;
-
-    private JRadioButton toBuild;
-    JRadioButton soldierRecruitment;
-    String selectedBuilding;
-    JComboBox<String> buildingStore;
-    ButtonGroup group;
+    private JPanel layoutButtons;
+    private JPanel layoutPlayers;
+    private JPanel sideBar;
+    private JLabel currentPlayerGoldLabel;
+    private JLabel roundPointLabel;
+    private JLabel citizenLabel;
 
     public Main() {
         setTitle("The Settlers");
@@ -33,14 +34,47 @@ public class Main extends JFrame implements MainContract.View {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        root = new JPanel();
+        JPanel root = new JPanel();
         root.setLayout(null);
         add(root);
 
-        actionListener = e -> {
+        layoutButtons = new JPanel();
+        layoutButtons.setBounds(0, 0, 725, 750);
+        layoutButtons.setBackground(Color.gray);
+        layoutButtons.setLayout(null);
+        root.add(layoutButtons);
 
-            JComboBox<String> combo = buildingStore;
-            selectedBuilding = (String) combo.getSelectedItem();
+        sideBar = new JPanel();
+        sideBar.setBounds(740, 0, 200, 750);
+        sideBar.setBackground(Color.gray);
+        sideBar.setLayout(new GridLayout(5, 1));
+        root.add(sideBar);
+
+        layoutPlayers = new JPanel();
+        layoutPlayers.setBounds(0, 0, 100, 100);
+        layoutPlayers.setBackground(Color.lightGray);
+        layoutPlayers.setLayout(new GridLayout(3, 1));
+        sideBar.add(layoutPlayers);
+
+        roundPointLabel = new JLabel();
+        roundPointLabel.setBounds(0, 110, 100, 100);
+        roundPointLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+        roundPointLabel.setBackground(Color.lightGray);
+        sideBar.add(roundPointLabel);
+
+        citizenLabel = new JLabel();
+        citizenLabel.setBounds(0, 220, 100, 100);
+        citizenLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+        citizenLabel.setBackground(Color.lightGray);
+        sideBar.add(citizenLabel);
+
+        currentPlayerGoldLabel = new JLabel();
+        currentPlayerGoldLabel.setBounds(0, 330, 100, 100);
+        currentPlayerGoldLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+        currentPlayerGoldLabel.setBackground(Color.lightGray);
+        sideBar.add(currentPlayerGoldLabel);
+
+        actionListener = e -> {
 
             String[] s = e.getActionCommand().split(" ");
 
@@ -49,17 +83,18 @@ public class Main extends JFrame implements MainContract.View {
 
             presenter.onTableItemClicked(new Position(x, y));
 
-            group.clearSelection();
-
             repaint();
         };
 
+        repaint();
+
         presenter = new MainPresenter(this);
+
     }
 
     @Override
-    public void showTable(Cell[][] table) {
-        root.removeAll();
+    public void showTable(CellItem[][] table) {
+        layoutButtons.removeAll();
 
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
@@ -68,91 +103,155 @@ public class Main extends JFrame implements MainContract.View {
                 btn.setActionCommand(i + " " + j);
                 btn.addActionListener(actionListener);
                 btn.setBounds(j * 14 + 12, i * 14 + 12, 14, 14);
-
-                root.add(btn);
+                btn.setFont(new Font("Arial", Font.PLAIN, 7));
+                btn.setBackground(Color.LIGHT_GRAY);
+                btn.setBorder(BorderFactory.createLineBorder(Color.white));
+                layoutButtons.add(btn);
 
                 btn.setOpaque(true);
 
-                Cell player = table[i][j];
-                if (player != null) {
-                    btn.setText(player.toString());
+                CellItem cells = table[i][j];
+                if (cells != null) {
+                    btn.setText(cells.toString());
                 }
+
             }
+
         }
-
-        JLabel roundTitle = new JLabel("Tedd vagy ne tedd!");
-
-        toBuild = new JRadioButton("Építés");
-        soldierRecruitment = new JRadioButton("Katona toborzás");
-        JRadioButton soldierMove = new JRadioButton("Katona mozgatás");
-        group = new ButtonGroup();
-        group.add(toBuild);
-        group.add(soldierRecruitment);
-        toBuild.setBounds(750, 330, 100, 40);
-        soldierRecruitment.setBounds(860, 330, 150, 40);
-
-        roundTitle.setBounds(750, 300, 200, 20);
-
-        root.add(roundTitle);
-        root.add(toBuild);
-        root.add(soldierRecruitment);
-
-        JButton doIt = new JButton("Építs - Toborozz!");
-
-        JPanel playerField = new JPanel();
-        playerField.setBounds(750, 40, 520, 200);
-        playerField.setBackground(Color.WHITE);
-        playerField.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-        playerField.setLayout(null);
-        root.add(playerField);
-        JLabel playerOne = new JLabel("Player 1: ");
-        playerOne.setBounds(750, 15, 200, 20);
-        root.add(playerOne);
-
-        buildingStore = new JComboBox<String>();
-        buildingStore.addItem("Városháza");
-        buildingStore.addItem("Fegyverkovács műhely");
-        buildingStore.addItem("Kaszárnya");
-        buildingStore.addItem("Kiképzőhely");
-        buildingStore.addItem("Bank");
-        buildingStore.addItem("Szállás");
-        buildingStore.addItem("Katonaszállás");
-        buildingStore.setBounds(750, 360, 150, 50);
-        buildingStore.setVisible(false);
-        root.add(buildingStore);
-
-
-        toBuild.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                buildingStore.setVisible(e.getStateChange() == ItemEvent.SELECTED);
-            }
-        });
     }
 
     @Override
     public void setSelection(Position position, boolean selection) {
-        Component component = root.getComponent(position.x * 50 + position.y);
+        Component component = layoutButtons.getComponent(position.x * 50 + position.y);
 
-        component.setBackground(selection ? Color.RED : null);
+        ((JButton)component).setBorder(BorderFactory.createLineBorder(Color.GREEN));
     }
 
     @Override
-    public void updateCell(Position position, Cell player) {
-        JButton btn = (JButton) root.getComponent(position.x * 50 + position.y);
+    public void updateCell(Position position, CellItem cell) {
+        JButton btn = (JButton) layoutButtons.getComponent(position.x * 50 + position.y);
 
-        btn.setText(player != null ? player.toString() : null);
+        btn.setText(cell != null ? cell.toString() : null);
     }
 
-    public JRadioButton getToBuild() {
-        return toBuild;
+    @Override
+    public int selectFromList(String[] list) {
+        return JOptionPane.showOptionDialog(
+                null,
+                "Select",
+                "Action",
+                0,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                list,
+                null);
     }
 
-    public JRadioButton getSoldierRecruitment() {
-        return soldierRecruitment;
+    @Override
+    public int selectFromBuildings(String[] list) {
+        return JOptionPane.showOptionDialog(
+                null,
+                "Select",
+                "Buildings",
+                0,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                list,
+                null);
     }
 
-    public String getSelectedBuilding() {
-        return selectedBuilding;
+    public int selectFromTownHall(String[] list) {
+        return JOptionPane.showOptionDialog(
+                null,
+                "Select",
+                "TownHall",
+                0,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                list,
+                null);
+    }
+
+    @Override
+    public void showPlayers(List<Player> players) {
+        layoutPlayers.removeAll();
+
+        for (Player player : players) {
+            layoutPlayers.add(new Label(player.getName()));
+        }
+
+    }
+
+    @Override
+    public void selectCurrentPlayer(Player player) {
+        for (int i = 0; i < layoutPlayers.getComponentCount(); i++) {
+            Label component = (Label) layoutPlayers.getComponent(i);
+
+            if (component.getText().equals(player.getName())) {
+                component.setBackground(Color.GREEN);
+            } else {
+                component.setBackground(null);
+            }
+        }
+
+        layoutPlayers.repaint();
+    }
+
+    public void showCurrentPlayerGold(Player player) {
+        currentPlayerGoldLabel.setText("Gold: " + String.valueOf(player.getGold()));
+        player.getGold();
+        currentPlayerGoldLabel.repaint();
+    }
+
+    public void showCurrentPlayerPoints(Player player) {
+        roundPointLabel.setText("RoundPoints: " + String.valueOf(player.getRoundPoint()));
+        player.getRoundPoint();
+    }
+
+    public void showCitizenNumber(Player player) {
+        citizenLabel.setText("Population: " +String.valueOf(player.getActualPopulation()));
+        citizenLabel.repaint();
+    }
+
+    @Override
+    public void highlightRange(Range range, Position center) {
+        for (int i = range.topLeft.x; i <= range.bottomRight.x; i++) {
+            for (int j = range.topLeft.y; j <= range.bottomRight.y; j++) {
+                if (center == null ||
+                        center.x == i || center.y == j) {
+                    int index = i * 50 + j;
+                    ((JButton) layoutButtons.getComponent(index))
+                            .setBorder(BorderFactory.createLineBorder(Color.green));
+                }
+            }
+        }
+    }
+
+    @Override
+    public void highlightTownHall(Range range, Position center) {
+        for (int i = range.topLeft.x; i <= range.bottomRight.x; i++) {
+            for (int j = range.topLeft.y; j <= range.bottomRight.y; j++) {
+                if (center == null ||
+                        center.x == i || center.y == j) {
+                    int index = i * 50 + j;
+                    ((JButton) layoutButtons.getComponent(index))
+                            .setBorder(BorderFactory.createLineBorder(Color.red));
+                }
+            }
+        }
+    }
+
+    @Override
+    public void removeHighlight() {
+        for (int i = 0; i < layoutButtons.getComponentCount(); i++) {
+            ((JButton) layoutButtons.getComponent(i))
+                    .setBorder(BorderFactory.createLineBorder(Color.white));
+        }
+    }
+
+    public void highlightAttackableItem(Position position, boolean highlight) {
+        JButton btn = (JButton) layoutButtons.getComponent(position.x * 50 + position.y);
+
+        btn.setBackground(highlight ? Color.PINK : Color.LIGHT_GRAY);
     }
 }

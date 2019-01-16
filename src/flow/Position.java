@@ -8,4 +8,9 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Position && ((Position) obj).x == x && ((Position) obj).y == y;
+    }
 }

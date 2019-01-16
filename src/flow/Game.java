@@ -1,60 +1,100 @@
 package flow;
 
+import flow.cells.CellItem;
+import flow.cells.TownHall;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
-    private Cell[][] table = new Cell[50][50];
+    private List<Player> players = new ArrayList<>();
+    private CellItem[][] table = new CellItem[50][50];
     private Position selectedPosition;
+
+    private int currentPlayerIndex = 0;
+
+    public Game() {
+        players.add(new Player("Player1"));
+        players.add(new Player("Player2"));
+        players.add(new Player("Player3"));
+    }
 
     public void selectItem(Position position) {
         selectedPosition = position;
+    }
+
+    public void deselectItem() {
+        selectedPosition = null;
     }
 
     public Position getSelectedPosition() {
         return selectedPosition;
     }
 
-    public void addItem(Position position, Cell player) {
-        table[position.x][position.y] = player;
+    public void addItem(Position position, CellItem cells) {
+        table[position.x][position.y] = cells;
     }
 
-    public Cell getCell(Position position) {
+    public CellItem getCellItem(Position position) {
         return table[position.x][position.y];
     }
 
-    public void moveSoldier(Position from, Position to) {
-        Cell player = table[from.x][from.y];
-        Cell cell = table[to.x][to.y];
+    public void moveCellItem(Position from, Position to) {
+        CellItem cellItem = table[from.x][from.y];
+        CellItem cell = table[to.x][to.y];
 
-        if (player != null && cell == null) {
+        if (cellItem != null && cell == null) {
             table[from.x][from.y] = null;
-            table[to.x][to.y] = player;
+            table[to.x][to.y] = cellItem;
         }
     }
 
-    public void toBuildTownHall(Position to) {
-        Cell townHall = new TownHall("V", "Városháza", null, 200, 2000);
-        Cell cell = table[to.x][to.y];
-        if (cell == null) {
-            table[to.x][to.y] = townHall;
-        }
-    }
-
-    public void toBuildBank(Position to) {
-        Cell bank = new Bank("B", "Bank", null, 200);
-        Cell cell = table[to.x][to.y];
-        if (cell == null) {
-            table[to.x][to.y] = bank;
-        }
-    }
-
-    public void toRecruit(Position to) {
-        Cell soldier = new Soldier("K", "Katona", 10);
-        Cell cell = table[to.x][to.y];
-        if (cell == null) {
-            table[to.x][to.y] = soldier;
-        }
-    }
-
-    public Cell[][] getTable() {
+    public CellItem[][] getTable() {
         return table;
+    }
+
+    public Player getCurrentPlayer() {
+        return players.get(currentPlayerIndex);
+    }
+
+    public void nextPlayer() {
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public boolean isValidStep(Position from, Position to) {
+        CellItem c = getCellItem(from);
+
+        return c != null &&
+                (from.x == to.x || from.y == to.y) &&
+                Math.abs(from.x - to.x) <= c.maxStep() &&
+                Math.abs(from.y - to.y) <= c.maxStep();
+    }
+
+    public boolean isValidAttack(Position from, Position to) {
+        CellItem c1 = getCellItem(from);
+        CellItem c2 = getCellItem(to);
+
+        return c1 != null && c2 != null &&
+                !c1.getOwner().equals(c2.getOwner()) &&
+                Math.abs(from.x - to.x) <= c1.attackRange() &&
+                Math.abs(from.y - to.y) <= c1.attackRange();
+    }
+
+    public boolean isValidBorder(Position from, Position to) {
+        CellItem c1 = getCellItem(from);
+        CellItem c2 = getCellItem(to);
+
+        return c1 != null && c2 != null &&
+                !c1.getOwner().equals(c2.getOwner()) &&
+                Math.abs(from.x - to.x) <= 11 &&
+                Math.abs(from.y - to.y) <= 11;
+    }
+
+    public void removeItem(Position position) {
+        table[position.x][position.y] = null;
     }
 }
