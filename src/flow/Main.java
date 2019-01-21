@@ -5,10 +5,12 @@ import flow.cells.CellItem;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
-import java.awt.BorderLayout;
 
 public class Main extends JFrame implements MainContract.View {
+
+    private static final ImageIcon SWORD_ICON = new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/swords.png");
 
     private ActionListener actionListener;
 
@@ -21,6 +23,12 @@ public class Main extends JFrame implements MainContract.View {
 
     private MainContract.Presenter presenter;
 
+    private JPanel layoutIndex;
+    List<String> playerNames = new ArrayList<>();
+    private JTextField player1;
+    private JTextField player2;
+    private JTextField player3;
+    private JButton savePlayer;
     private JPanel layoutMap;
     private JPanel layoutTown;
     private JPanel layoutPlayers;
@@ -30,6 +38,7 @@ public class Main extends JFrame implements MainContract.View {
     private JButton attack;
     private JButton back;
     private JButton next;
+
 
     public Main() {
         setTitle("The Settlers");
@@ -88,7 +97,7 @@ public class Main extends JFrame implements MainContract.View {
         attack = new JButton();
         attack.setBounds(800,590,200,40);
         attack.setLayout(null);
-        attack.setIcon(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/swords.png"));
+        attack.setIcon(SWORD_ICON);
         attack.addActionListener(e -> {
 
 
@@ -126,6 +135,42 @@ public class Main extends JFrame implements MainContract.View {
         root.add(back);
 
 
+        layoutIndex = new JPanel();
+        layoutIndex.setBounds(0,0, 1010, 800);
+        layoutIndex.setBackground(new Color(179, 207, 184));
+        layoutIndex.setLayout(null);
+        layoutIndex.setOpaque(true);
+        add(layoutIndex);
+
+        player1 = new JTextField();
+        player1.setBounds(500,100,300,50);
+        layoutIndex.add(player1);
+
+        player2 = new JTextField();
+        player2.setBounds(500,160,300,50);
+        layoutIndex.add(player2);
+
+        player3 = new JTextField();
+        player3.setBounds(500,220,300,50);
+        layoutIndex.add(player3);
+
+        savePlayer = new JButton("Start");
+        savePlayer.setBounds(500,280,100,50);
+        savePlayer.addActionListener(e -> {
+           savePlayers(player1.getText(), player2.getText(), player3.getText());
+
+            presenter.init();
+
+            remove(layoutIndex);
+            add(root);
+            presenter.redrawTable();
+            layoutMap.setVisible(true);
+
+            repaint();
+        });
+        layoutIndex.add(savePlayer);
+
+
         actionListener = e -> {
 
             String[] s = e.getActionCommand().split(" ");
@@ -143,6 +188,22 @@ public class Main extends JFrame implements MainContract.View {
 
         presenter = new MainPresenter(this);
 
+    }
+
+    public List<String> savePlayers(String... players) {
+        if(players == null) {
+            return null;
+        }
+        for(String player: players) {
+            playerNames.add(player);
+        }
+
+        return playerNames;
+    }
+
+    @Override
+    public List<String> getPlayerNames() {
+        return playerNames;
     }
 
     @Override
@@ -165,7 +226,7 @@ public class Main extends JFrame implements MainContract.View {
 
                 CellItem cells = table[i][j];
                 if (cells != null) {
-                    btn.setText(cells.toString());
+                    btn.setIcon(cells.layoutImage());
                 }
 
             }
@@ -203,7 +264,7 @@ public class Main extends JFrame implements MainContract.View {
 
                 CellItem cells = townTable[i][j];
                 if (cells != null) {
-                    btn.setText(cells.toString());
+                    btn.setIcon(cells.layoutImage());
                 }
 
             }
@@ -211,7 +272,6 @@ public class Main extends JFrame implements MainContract.View {
         }
         layoutMap.setVisible(false);
     }
-
 
 
     @Override

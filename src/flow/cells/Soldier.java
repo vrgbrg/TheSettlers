@@ -38,4 +38,11 @@ public class Soldier extends CellItem {
     public int attackRange() {
         return 5;
     }
+
+    @Override
+    public String toString() {
+        return "Soldier{" +
+                "power=" + power +
+                '}';
+    }
 }

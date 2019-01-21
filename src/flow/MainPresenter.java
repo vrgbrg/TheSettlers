@@ -2,6 +2,8 @@ package flow;
 
 import flow.cells.*;
 
+import java.util.List;
+
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
     private Game game;
@@ -9,20 +11,26 @@ public class MainPresenter implements MainContract.Presenter {
     public MainPresenter(MainContract.View view) {
         this.view = view;
         game = new Game();
+    }
 
-        initializeTownHall();
+    @Override
+    public void init() {
+            game.setPlayers(view.getPlayerNames());
 
-        view.showTable(game.getTable());
-        view.showPlayers(game.getPlayers());
-        view.selectCurrentPlayer(game.getCurrentPlayer());
-        view.showCurrentCityData(game.getCurrentPlayer());
-        view.showCurrentPlayerPoints(game.getCurrentPlayer());
+            initializeTownHall();
+
+            view.showTable(game.getTable());
+            view.showPlayers(game.getPlayers());
+            view.selectCurrentPlayer(game.getCurrentPlayer());
+            view.showCurrentCityData(game.getCurrentPlayer());
+            view.showCurrentPlayerPoints(game.getCurrentPlayer());
     }
 
     private void initializeTownHall() {
-        game.addTownItem(new Position(5, 5), new TownHall(game.getCurrentPlayer()));
+        Player player = game.getCurrentPlayer();
+        player.addTownItem(new Position(5, 5), new TownHall(player));
     }
-    
+
 
     @Override
     public void onTableItemClicked(Position position, boolean isTable) {
@@ -39,10 +47,13 @@ public class MainPresenter implements MainContract.Presenter {
         view.showCurrentCityData(currentPlayer);
 
         if (item instanceof TownHall && item.getOwner().equals(currentPlayer)) {
-            view.showTownTable(game.getTownTable());
+            view.showTownTable(currentPlayer.getTownTable());
             return;
         }
 
+
+
+        
         if (cellItem != null) {
             if (!cellItem.getOwner().equals(currentPlayer)) {
                 if (selectedPosition != null) {
@@ -89,7 +100,7 @@ public class MainPresenter implements MainContract.Presenter {
                     addNewItem(position);
                 } else {
 
-                    CellItem townCellItem = game.getTownHallCellItem(position);
+                    CellItem townCellItem = currentPlayer.getTownHallCellItem(position);
                     if (townCellItem == null) {
                         addNewTownItem(position);
                     }
@@ -161,6 +172,10 @@ public class MainPresenter implements MainContract.Presenter {
         }
     }
 
+    private void savePlayers(Player player) {
+
+    }
+
     private boolean changeItemSelection(Position position, Position selectedPosition) {
         game.selectItem(position);
         view.setSelection(position, true);
@@ -216,7 +231,7 @@ public class MainPresenter implements MainContract.Presenter {
         Player currentPlayer = game.getCurrentPlayer();
 
         CellItem[][] table = game.getTable();
-        CellItem[][] townTable = game.getTownTable();
+        CellItem[][] townTable = currentPlayer.getTownTable();
 
         if (!(hasTypeOfCell(table, "TownHall", currentPlayer))) {
             int choiceTownHall = view.selectFromTownHall(townhall);
@@ -301,7 +316,7 @@ public class MainPresenter implements MainContract.Presenter {
 
 
         if (cellItem != null) {
-            game.addTownItem(position, cellItem);
+            currentPlayer.addTownItem(position, cellItem);
 
             view.updateTownCell(position, cellItem);
         }

@@ -17,6 +17,7 @@ public interface MainContract {
         int selectFromTownHall(String[] list);
         void showPlayers(List<Player> players);
         void selectCurrentPlayer(Player player);
+        List<String> getPlayerNames();
         void showCurrentCityData(Player player);
         void showCurrentPlayerPoints(Player player);
         void showCurrentCell(Player player, CellItem cell);
@@ -30,6 +31,7 @@ public interface MainContract {
 
     interface Presenter {
         void onTableItemClicked(Position position, boolean isTable);
+        void init();
         void redrawTable();
         void skipPlayer();
 

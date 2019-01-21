@@ -9,15 +9,18 @@ import java.util.List;
 public class Game {
     private List<Player> players = new ArrayList<>();
     private CellItem[][] table = new CellItem[40][40];
-    private CellItem[][] townTable = new CellItem[11][11];
+    // private CellItem[][] townTable = new CellItem[11][11];
     private Position selectedPosition;
 
     private int currentPlayerIndex = 0;
 
     public Game() {
-        players.add(new Player("Player1"));
-        players.add(new Player("Player2"));
-        players.add(new Player("Player3"));
+    }
+
+    public void setPlayers(List<String> playerNames) {
+        for (String player : playerNames) {
+            players.add(new Player(player));
+        }
     }
 
     public void selectItem(Position position) {
@@ -36,17 +39,12 @@ public class Game {
         table[position.x][position.y] = cells;
     }
 
-    public void addTownItem(Position position, CellItem cells) {
-        townTable[position.x][position.y] = cells;
-    }
+
 
     public CellItem getCellItem(Position position) {
         return table[position.x][position.y];
     }
 
-    public CellItem getTownHallCellItem(Position position) {
-        return townTable[position.x][position.y];
-    }
 
     public void moveCellItem(Position from, Position to) {
         CellItem cellItem = table[from.x][from.y];
@@ -62,9 +60,6 @@ public class Game {
         return table;
     }
 
-    public CellItem[][] getTownTable() {
-        return townTable;
-    }
 
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);

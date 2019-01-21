@@ -1,5 +1,7 @@
 package flow;
 
+import flow.cells.CellItem;
+
 public class Player {
 
     private final String name;
@@ -7,6 +9,7 @@ public class Player {
     private int gold;
     private int actualPopulation;
     private int maxPopulation;
+    private CellItem[][] townTable;
 
     public Player(String name) {
 
@@ -14,6 +17,7 @@ public class Player {
         this.gold = 1000;
         this.roundPoint = 3;
         this.actualPopulation = random(500, 1000);
+        this.townTable = new CellItem[11][11];
 
     }
 
@@ -56,6 +60,18 @@ public class Player {
     private int random(int min, int max) {
         int random = (int)(Math.random() * (max-min)+1 + min);
         return random;
+    }
+
+    public CellItem[][] getTownTable() {
+        return townTable;
+    }
+
+    public void addTownItem(Position position, CellItem cells) {
+        townTable[position.x][position.y] = cells;
+    }
+
+    public CellItem getTownHallCellItem(Position position) {
+        return townTable[position.x][position.y];
     }
 
     @Override
