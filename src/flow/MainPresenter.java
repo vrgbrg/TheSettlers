@@ -53,7 +53,7 @@ public class MainPresenter implements MainContract.Presenter {
 
 
 
-        
+
         if (cellItem != null) {
             if (!cellItem.getOwner().equals(currentPlayer)) {
                 if (selectedPosition != null) {

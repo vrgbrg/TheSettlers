@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e565b66f-1a84-4a86-9b35-43b681c212cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/flow/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainPresenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Soldier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/MainContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/MainContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/MainPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/MainPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/cells/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/Soldier.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,25 +27,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="154" />
+          <entry key="java" value="161" />
           <entry key="properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="154" />
+          <entry key="JAVA" value="161" />
           <entry key="Properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
-          <entry key="java" value="12411" />
+          <entry key="java" value="12568" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12411" />
+          <entry key="JAVA" value="12568" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
@@ -54,22 +54,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/MainContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/flow/cells/Soldier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+            <state relative-caret-position="135">
+              <caret line="9" column="115" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="115" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,44 +66,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="287" column="44" selection-start-line="287" selection-start-column="44" selection-end-line="287" selection-end-column="44" />
+            <state relative-caret-position="135">
+              <caret line="9" column="122" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="122" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5635#5636#0" expanded="true" />
-                <element signature="e#5662#5663#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#860#861#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
-                <element signature="e#1734#1735#0" expanded="true" />
-                <element signature="e#1788#1789#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/flow/MainPresenter.java">
+        <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-815">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+            <state relative-caret-position="361">
+              <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4184#4185#0" expanded="true" />
-                <element signature="e#4231#4232#0" expanded="true" />
+                <element signature="e#5635#5636#0" expanded="true" />
+                <element signature="e#5662#5663#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,15 +108,72 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/Player.java">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/TownHall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="165">
+              <caret line="11" column="117" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="117" />
               <folding>
-                <element signature="e#527#528#0" expanded="true" />
-                <element signature="e#569#570#0" expanded="true" />
-                <element signature="e#1343#1344#0" expanded="true" />
-                <element signature="e#1400#1401#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/TrainingRoom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="10" column="120" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="120" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/Bank.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="113" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="113" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/BarrackRoom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="118" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="118" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/GunSmith.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="10" column="128" lean-forward="true" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="128" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/LivingQuarters.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="116" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="116" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -213,20 +240,20 @@
         <option value="$PROJECT_DIR$/src/flow/Position.java" />
         <option value="$PROJECT_DIR$/src/flow/TownPresenter.java" />
         <option value="$PROJECT_DIR$/src/flow/Town.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/TownHall.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/Bank.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/GunSmith.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/LivingQuarters.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/TrainingRoom.java" />
         <option value="$PROJECT_DIR$/src/flow/MainContract.java" />
-        <option value="$PROJECT_DIR$/src/flow/Main.java" />
         <option value="$PROJECT_DIR$/src/flow/Game.java" />
         <option value="$PROJECT_DIR$/src/flow/Player.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/CellItem.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/Soldier.java" />
         <option value="$PROJECT_DIR$/src/flow/MainPresenter.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/TrainingRoom.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/TownHall.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/Soldier.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/LivingQuarters.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/GunSmith.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/Bank.java" />
+        <option value="$PROJECT_DIR$/src/flow/Main.java" />
       </list>
     </option>
   </component>
@@ -274,6 +301,12 @@
               <item name="flow" type="462c0819:PsiDirectoryNode" />
               <item name="cells" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TheSettlers" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TheSettlers" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -282,7 +315,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="palette&#9;ACTION&#9;ActivatePalette&#9;ToolWindow" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548108734618" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548110601669" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -491,68 +524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/GunSmith.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="131" selection-start-line="10" selection-start-column="131" selection-end-line="10" selection-end-column="131" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/LivingQuarters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="9" column="118" selection-start-line="9" selection-start-column="118" selection-end-line="9" selection-end-column="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/BarrackRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="9" column="120" selection-start-line="9" selection-start-column="120" selection-end-line="9" selection-end-column="120" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="115" selection-start-line="10" selection-start-column="115" selection-end-line="10" selection-end-column="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/TrainingRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="122" selection-start-line="10" selection-start-column="122" selection-end-line="10" selection-end-column="122" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="9" column="124" selection-start-line="9" selection-start-column="124" selection-end-line="9" selection-end-column="124" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/TextArea.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1935">
@@ -564,16 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/TownHall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -617,6 +578,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/MainPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-817">
+          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4184#4185#0" expanded="true" />
+            <element signature="e#4231#4232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/flow/cells/CellItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -631,10 +604,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/TrainingRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="10" column="120" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="120" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/TownHall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="117" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="122" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="122" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/flow/cells/Soldier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+        <state relative-caret-position="135">
+          <caret line="9" column="115" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="115" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/LivingQuarters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="116" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="116" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/GunSmith.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="10" column="128" lean-forward="true" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="128" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/BarrackRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="118" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="118" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="113" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="113" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -643,24 +686,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="287" column="44" selection-start-line="287" selection-start-column="44" selection-end-line="287" selection-end-column="44" />
+        <state relative-caret-position="361">
+          <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5635#5636#0" expanded="true" />
             <element signature="e#5662#5663#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/MainPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-815">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4184#4185#0" expanded="true" />
-            <element signature="e#4231#4232#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -24,7 +24,8 @@ public class Main extends JFrame implements MainContract.View {
     private MainContract.Presenter presenter;
 
     private JPanel layoutIndex;
-    List<String> playerNames = new ArrayList<>();
+    private JLabel logo = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/compass.png"));
+    private List<String> playerNames = new ArrayList<>();
     private JTextField player1;
     private JTextField player2;
     private JTextField player3;
@@ -140,22 +141,24 @@ public class Main extends JFrame implements MainContract.View {
         layoutIndex.setBackground(new Color(179, 207, 184));
         layoutIndex.setLayout(null);
         layoutIndex.setOpaque(true);
+        logo.setBounds(50,150,500,500);
+        layoutIndex.add(logo);
         add(layoutIndex);
 
-        player1 = new JTextField();
-        player1.setBounds(500,100,300,50);
+        player1 = new JTextField("Player 1");
+        player1.setBounds(560,280,350,50);
         layoutIndex.add(player1);
 
-        player2 = new JTextField();
-        player2.setBounds(500,160,300,50);
+        player2 = new JTextField("Player 2");
+        player2.setBounds(560,340,350,50);
         layoutIndex.add(player2);
 
-        player3 = new JTextField();
-        player3.setBounds(500,220,300,50);
+        player3 = new JTextField("Player 3");
+        player3.setBounds(560,400,350,50);
         layoutIndex.add(player3);
 
         savePlayer = new JButton("Start");
-        savePlayer.setBounds(500,280,100,50);
+        savePlayer.setBounds(560,460,100,50);
         savePlayer.addActionListener(e -> {
            savePlayers(player1.getText(), player2.getText(), player3.getText());
 
