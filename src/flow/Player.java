@@ -4,7 +4,7 @@ public class Player {
 
     private final String name;
     private int roundPoint;
-    private double gold;
+    private int gold;
     private int actualPopulation;
     private int maxPopulation;
 
@@ -25,20 +25,28 @@ public class Player {
         return roundPoint;
     }
 
-    public void changeRoundPoint(int point) {
-        roundPoint -= point;
+    public int changeRoundPoint(int point) {
+        return roundPoint -= point;
     }
 
-    public void changeGold(double minus) {
-        gold -= minus;
+    public double changeGold(double minus) {
+        return gold -= minus;
     }
 
-    public double getGold() {
+    public int getGold() {
         return gold;
     }
 
     public int getActualPopulation() {
         return actualPopulation;
+    }
+
+    public int populationDecrease(int minus) {
+        return actualPopulation -= minus;
+    }
+
+    public int populationIncrease(int plus) {
+        return actualPopulation += plus;
     }
 
     public int getMaxPopulation() {

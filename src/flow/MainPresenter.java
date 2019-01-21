@@ -10,23 +10,38 @@ public class MainPresenter implements MainContract.Presenter {
         this.view = view;
         game = new Game();
 
+        initializeTownHall();
 
         view.showTable(game.getTable());
         view.showPlayers(game.getPlayers());
         view.selectCurrentPlayer(game.getCurrentPlayer());
-        view.showCurrentPlayerGold(game.getCurrentPlayer());
+        view.showCurrentCityData(game.getCurrentPlayer());
         view.showCurrentPlayerPoints(game.getCurrentPlayer());
-        view.showCitizenNumber(game.getCurrentPlayer());
-
     }
 
+    private void initializeTownHall() {
+        game.addTownItem(new Position(5, 5), new TownHall(game.getCurrentPlayer()));
+    }
+    
+
     @Override
-    public void onTableItemClicked(Position position) {
+    public void onTableItemClicked(Position position, boolean isTable) {
         CellItem[][] table = game.getTable();
         CellItem cellItem = game.getCellItem(position);
+
         Player currentPlayer = game.getCurrentPlayer();
 
         Position selectedPosition = game.getSelectedPosition();
+
+        CellItem item = game.getCellItem(position);
+
+        view.showCurrentPlayerPoints(currentPlayer);
+        view.showCurrentCityData(currentPlayer);
+
+        if (item instanceof TownHall && item.getOwner().equals(currentPlayer)) {
+            view.showTownTable(game.getTownTable());
+            return;
+        }
 
         if (cellItem != null) {
             if (!cellItem.getOwner().equals(currentPlayer)) {
@@ -34,11 +49,13 @@ public class MainPresenter implements MainContract.Presenter {
                     CellItem selectedItem = game.getCellItem(selectedPosition);
 
                     if (selectedItem.getOwner().equals(currentPlayer)) {
+                        view.selectionText(selectedPosition, true);
                         if (game.isValidAttack(selectedPosition, position)) {
                             game.removeItem(position);
                             view.updateCell(position, null);
                             removeHighlights();
                             view.setSelection(selectedPosition, false);
+                            view.showCurrentCell(currentPlayer, selectedItem);
                         }
                     }
                 }
@@ -68,19 +85,36 @@ public class MainPresenter implements MainContract.Presenter {
                     moveItem(position, selectedPosition);
                 }
             } else {
-                addNewItem(position);
+                if (isTable) {
+                    addNewItem(position);
+                } else {
+
+                    CellItem townCellItem = game.getTownHallCellItem(position);
+                    if (townCellItem == null) {
+                        addNewTownItem(position);
+                    }
+
+                }
             }
         }
 
+        int population = currentPlayer.getActualPopulation();
         if (currentPlayer.getRoundPoint() <= 0) {
-            currentPlayer.changeGold(currentPlayer.getActualPopulation() * 0.1);
             nextPlayer();
-            highlightTownHallRange(townHallBorder(table, currentPlayer));
+            highlightTownHallRange(townHallBorder(table, currentPlayer), true);
         }
 
-        view.showCurrentPlayerPoints(currentPlayer);
-        view.showCurrentPlayerGold(currentPlayer);
+    }
 
+    @Override
+    public void redrawTable() {
+        view.showTable(game.getTable());
+    }
+
+    @Override
+    public void skipPlayer() {
+        game.nextPlayer();
+        view.selectCurrentPlayer(game.getCurrentPlayer());
     }
 
     private void highlightItemRange(Position itemPosition, CellItem item) {
@@ -97,26 +131,27 @@ public class MainPresenter implements MainContract.Presenter {
         view.highlightRange(range, item.canMoveDiagonally() ? null : itemPosition);
     }
 
-    private void highlightTownHallRange(Position itemPosition) {
+    private void highlightTownHallRange(Position itemPosition, boolean isTable) {
         view.removeHighlight();
 
         CellItem item = game.getCellItem(itemPosition);
 
         Position p1 = new Position(
-                Math.max(0, itemPosition.x - 11),
-                Math.max(0, itemPosition.y - 11));
+                Math.max(0, itemPosition.x - 5),
+                Math.max(0, itemPosition.y - 5));
         Position p2 = new Position(
-                Math.min(49, itemPosition.x + 11),
-                Math.min(49, itemPosition.y + 11));
+                Math.min(49, itemPosition.x + 5),
+                Math.min(49, itemPosition.y + 5));
 
         Range range = new Range(p1, p2);
-        view.highlightTownHall(range, item.canMoveDiagonally() ? null : itemPosition);
+        view.highlightTownHall(range, item.canMoveDiagonally() ? null : itemPosition, true);
     }
 
     private void nextPlayer() {
         game.nextPlayer();
+        cityTaxCalculator(game.getCurrentPlayer());
         view.selectCurrentPlayer(game.getCurrentPlayer());
-        view.showCurrentPlayerGold(game.getCurrentPlayer());
+        view.showCurrentCityData(game.getCurrentPlayer());
 
 
         Position selectedPosition = game.getSelectedPosition();
@@ -181,6 +216,7 @@ public class MainPresenter implements MainContract.Presenter {
         Player currentPlayer = game.getCurrentPlayer();
 
         CellItem[][] table = game.getTable();
+        CellItem[][] townTable = game.getTownTable();
 
         if (!(hasTypeOfCell(table, "TownHall", currentPlayer))) {
             int choiceTownHall = view.selectFromTownHall(townhall);
@@ -188,75 +224,86 @@ public class MainPresenter implements MainContract.Presenter {
                 cellItem = new TownHall(currentPlayer);
                 currentPlayer.changeRoundPoint(2);
             }
-        } else if (hasTypeOfCell(table, "BarrackRoom", currentPlayer)) {
+        } else if (hasTypeOfCell(townTable, "BarrackRoom", currentPlayer)) {
             int choice = view.selectFromList(list);
             if (choice == 1) {
+                if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
                 cellItem = new Soldier(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-            } else if (choice == 0) {
-                int buildingChoice = view.selectFromList(buildings);
-                if (buildingChoice == 0) {
-                    cellItem = new Bank(currentPlayer);
-                    currentPlayer.changeRoundPoint(2);
-                    currentPlayer.changeGold(((Bank) cellItem).getPrice());
-                    // currentPlayer.setGold();
-                } else if (buildingChoice == 1) {
-                    cellItem = new BarrackRoom(currentPlayer);
-                    currentPlayer.changeRoundPoint(2);
-                    currentPlayer.changeGold(((BarrackRoom) cellItem).getPrice());
-                } else if (buildingChoice == 2) {
-                    cellItem = new GunSmith(currentPlayer);
-                    currentPlayer.changeRoundPoint(2);
-                    currentPlayer.changeGold(((GunSmith) cellItem).getPrice());
-                } else if (buildingChoice == 3) {
-                    cellItem = new TrainingRoom(currentPlayer);
-                    currentPlayer.changeRoundPoint(2);
-                    currentPlayer.changeGold(((TrainingRoom) cellItem).getPrice());
-                } else if (buildingChoice == 4) {
-                    cellItem = new LivingQuarters(currentPlayer);
-                    currentPlayer.changeRoundPoint(2);
-                    currentPlayer.changeGold(((LivingQuarters) cellItem).getPrice());
-                } else if (buildingChoice == 5) {
-                    cellItem = new SoldierLivingQuarters(currentPlayer);
-                    currentPlayer.changeRoundPoint(2);
-                    currentPlayer.changeGold(((SoldierLivingQuarters) cellItem).getPrice());
+                currentPlayer.changeRoundPoint(2);} else {
+                    System.out.println("Nincs elég pontod/aranyad!");
                 }
             }
-        } else {
-            int buildingChoice = view.selectFromList(buildings);
-            if (buildingChoice == 0) {
-                cellItem = new Bank(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((Bank) cellItem).getPrice());
-                // currentPlayer.setGold();
-            } else if (buildingChoice == 1) {
-                cellItem = new BarrackRoom(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((BarrackRoom) cellItem).getPrice());
-            } else if (buildingChoice == 2) {
-                cellItem = new GunSmith(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((GunSmith) cellItem).getPrice());
-            } else if (buildingChoice == 3) {
-                cellItem = new TrainingRoom(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((TrainingRoom) cellItem).getPrice());
-            } else if (buildingChoice == 4) {
-                cellItem = new LivingQuarters(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((LivingQuarters) cellItem).getPrice());
-            } else if (buildingChoice == 5) {
-                cellItem = new SoldierLivingQuarters(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((SoldierLivingQuarters) cellItem).getPrice());
-            }
         }
-
 
         if (cellItem != null) {
             game.addItem(position, cellItem);
 
             view.updateCell(position, cellItem);
+        }
+
+    }
+
+    private void addNewTownItem(Position position) {
+        String[] buildings = {"Bank", "Kaszárnya", "Fegyverkovács műhely", "Kiképzőhely", "Szállás", "Katonaszállás"};
+        CellItem cellItem = null;
+        Player currentPlayer = game.getCurrentPlayer();
+
+        int buildingChoice = view.selectFromList(buildings);
+        if (buildingChoice == 0) {
+            if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
+                cellItem = new Bank(currentPlayer);
+                currentPlayer.changeRoundPoint(2);
+                currentPlayer.changeGold(((Bank) cellItem).getPrice());
+            } else {
+                System.out.println("Nincs elég pontod/aranyad!");
+            }
+        } else if (buildingChoice == 1) {
+            if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
+                cellItem = new BarrackRoom(currentPlayer);
+                currentPlayer.changeRoundPoint(2);
+                currentPlayer.changeGold(((BarrackRoom) cellItem).getPrice());
+            } else {
+                System.out.println("Nincs elég pontod/aranyad!");
+            }
+        } else if (buildingChoice == 2) {
+            if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
+                cellItem = new GunSmith(currentPlayer);
+                currentPlayer.changeRoundPoint(2);
+                currentPlayer.changeGold(((GunSmith) cellItem).getPrice());
+            } else {
+                System.out.println("Nincs elég pontod/aranyad!");
+            }
+        } else if (buildingChoice == 3) {
+            if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
+                cellItem = new TrainingRoom(currentPlayer);
+                currentPlayer.changeRoundPoint(2);
+                currentPlayer.changeGold(((TrainingRoom) cellItem).getPrice());
+            } else {
+                System.out.println("Nincs elég pontod/aranyad!");
+            }
+        } else if (buildingChoice == 4) {
+            if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
+                cellItem = new LivingQuarters(currentPlayer);
+                currentPlayer.changeRoundPoint(2);
+                currentPlayer.changeGold(((LivingQuarters) cellItem).getPrice());
+            } else {
+                System.out.println("Nincs elég pontod/aranyad!");
+            }
+        } else if (buildingChoice == 5) {
+            if (currentPlayer.getRoundPoint() - currentPlayer.changeRoundPoint(2) >= 0) {
+                cellItem = new SoldierLivingQuarters(currentPlayer);
+                currentPlayer.changeRoundPoint(2);
+                currentPlayer.changeGold(((SoldierLivingQuarters) cellItem).getPrice());
+            } else {
+                System.out.println("Nincs elég pontod/aranyad!");
+            }
+        }
+
+
+        if (cellItem != null) {
+            game.addTownItem(position, cellItem);
+
+            view.updateTownCell(position, cellItem);
         }
 
     }
@@ -295,7 +342,38 @@ public class MainPresenter implements MainContract.Presenter {
             }
         }
 
-        return  cell;
+        return cell;
+    }
+
+    private void cityTaxCalculator(Player player) {
+
+        double t = player.getActualPopulation() * 0.1;
+        int tax = (int) t;
+
+        player.changeGold(tax);
+
+    }
+
+    private void cityDeath(Player player) {
+
+        int randomNumber = random(0, 9);
+
+        double d = player.getActualPopulation() * randomNumber;
+        int death = (int) d;
+
+        player.populationDecrease(death);
+
+    }
+
+    private void cityBorn(Player player) {
+
+        int randomNumber = random(0, 15);
+
+        double b = player.getActualPopulation() * randomNumber;
+        int born = (int) b;
+
+        player.populationIncrease(born);
+
     }
 
 }

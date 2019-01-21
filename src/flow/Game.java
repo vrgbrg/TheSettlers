@@ -8,7 +8,8 @@ import java.util.List;
 
 public class Game {
     private List<Player> players = new ArrayList<>();
-    private CellItem[][] table = new CellItem[50][50];
+    private CellItem[][] table = new CellItem[40][40];
+    private CellItem[][] townTable = new CellItem[11][11];
     private Position selectedPosition;
 
     private int currentPlayerIndex = 0;
@@ -35,8 +36,16 @@ public class Game {
         table[position.x][position.y] = cells;
     }
 
+    public void addTownItem(Position position, CellItem cells) {
+        townTable[position.x][position.y] = cells;
+    }
+
     public CellItem getCellItem(Position position) {
         return table[position.x][position.y];
+    }
+
+    public CellItem getTownHallCellItem(Position position) {
+        return townTable[position.x][position.y];
     }
 
     public void moveCellItem(Position from, Position to) {
@@ -51,6 +60,10 @@ public class Game {
 
     public CellItem[][] getTable() {
         return table;
+    }
+
+    public CellItem[][] getTownTable() {
+        return townTable;
     }
 
     public Player getCurrentPlayer() {

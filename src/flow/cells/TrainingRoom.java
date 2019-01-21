@@ -2,11 +2,13 @@ package flow.cells;
 
 import flow.Player;
 
+import javax.swing.*;
+
 public class TrainingRoom extends CellItem {
     private int price;
 
     public TrainingRoom(Player owner) {
-        super(owner, "Kiképzőhely");
+        super(owner, "Kiképzőhely", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
         this.price = 400;
     }
 

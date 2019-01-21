@@ -2,11 +2,17 @@ package flow.cells;
 
 import flow.Player;
 
-public class TownHall extends CellItem {
-    public TownHall(Player owner) {
+import javax.swing.*;
+import java.awt.image.BufferedImage;
 
-        super(owner, "Városháza");
+
+public class TownHall extends CellItem {
+
+    public TownHall(Player owner) {
+        super(owner, "Városháza",new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
+
     }
+
 
     @Override
     public boolean isMovable() {
@@ -27,5 +33,6 @@ public class TownHall extends CellItem {
     public int attackRange() {
         return 0;
     }
+
 }
 

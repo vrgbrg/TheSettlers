@@ -2,11 +2,13 @@ package flow.cells;
 
 import flow.Player;
 
+import javax.swing.*;
+
 public class Bank extends CellItem {
     private int price;
     public Bank(Player owner) {
 
-        super(owner, "Bank");
+        super(owner, "Bank", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
         this.price = 700;
     }
 

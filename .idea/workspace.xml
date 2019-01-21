@@ -2,38 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e565b66f-1a84-4a86-9b35-43b681c212cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Bank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Building.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Cell.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/GunSmith.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/LivingQuarters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainPresenter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$Action.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$Presenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$Presenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainPresenter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Soldier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/TownHall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/TrainingRoom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Bank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Building.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/BarrackRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/BarrackRoom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/CellItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/CellItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/GunSmith.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/GunSmith.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/LivingQuarters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/LivingQuarters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Soldier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/SoldierLivingQuarters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/SoldierLivingQuarters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/TownHall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/TownHall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/TrainingRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/TrainingRoom.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/GunSmith.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/LivingQuarters.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/MainContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/MainContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/MainPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/MainPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Soldier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/TownHall.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/TrainingRoom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/CellItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/CellItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/GunSmith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/GunSmith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/LivingQuarters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/LivingQuarters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/TownHall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/TownHall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow/cells/TrainingRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flow/cells/TrainingRoom.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,23 +53,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="119" />
+          <entry key="java" value="146" />
+          <entry key="properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="119" />
+          <entry key="JAVA" value="146" />
+          <entry key="Properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
-          <entry key="java" value="6095" />
+          <entry key="java" value="10568" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6095" />
+          <entry key="JAVA" value="10568" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
@@ -78,12 +80,92 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/Soldier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="234" column="24" lean-forward="true" selection-start-line="234" selection-start-column="24" selection-end-line="234" selection-end-column="24" />
+            <state relative-caret-position="135">
+              <caret line="9" column="115" selection-start-line="9" selection-start-column="115" selection-end-line="9" selection-end-column="115" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#291#292#0" expanded="true" />
+                <element signature="e#329#330#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="9" column="124" selection-start-line="9" selection-start-column="124" selection-end-line="9" selection-end-column="124" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/MainContract.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3339">
+              <caret line="364" column="1" lean-forward="true" selection-start-line="364" selection-start-column="1" selection-end-line="364" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/TownHall.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#913#914#0" expanded="true" />
+                <element signature="e#979#980#0" expanded="true" />
+                <element signature="e#1036#1037#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flow/cells/CellItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#708#709#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,49 +174,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/flow/MainPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/cells/CellItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/Position.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="87" selection-start-line="87" selection-end-line="87" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#908#909#0" expanded="true" />
-                <element signature="e#960#961#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flow/cells/BarrackRoom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state relative-caret-position="330">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -153,9 +194,14 @@
     <findStrings>
       <find>null</find>
       <find>light</find>
-      <find>get</find>
       <find>max</find>
       <find>remove</find>
+      <find>add</find>
+      <find>get</find>
+      <find>do</find>
+      <find>dou</find>
+      <find>actionListener</find>
+      <find>roun</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,22 +231,30 @@
         <option value="$PROJECT_DIR$/src/flow/cells/Building.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/Train.java" />
         <option value="$PROJECT_DIR$/src/flow/Position.java" />
+        <option value="$PROJECT_DIR$/src/flow/TownPresenter.java" />
+        <option value="$PROJECT_DIR$/src/flow/Town.java" />
         <option value="$PROJECT_DIR$/src/flow/Player.java" />
-        <option value="$PROJECT_DIR$/src/flow/MainContract.java" />
-        <option value="$PROJECT_DIR$/src/flow/Main.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/TownHall.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/Bank.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/CellItem.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/GunSmith.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/LivingQuarters.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/Soldier.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/TownHall.java" />
         <option value="$PROJECT_DIR$/src/flow/cells/TrainingRoom.java" />
-        <option value="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/CellItem.java" />
+        <option value="$PROJECT_DIR$/src/flow/MainContract.java" />
+        <option value="$PROJECT_DIR$/src/flow/cells/Soldier.java" />
         <option value="$PROJECT_DIR$/src/flow/Game.java" />
         <option value="$PROJECT_DIR$/src/flow/MainPresenter.java" />
+        <option value="$PROJECT_DIR$/src/flow/Main.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1" />
@@ -248,7 +302,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547671292725" />
+    <property name="SearchEverywhereHistoryKey" value="palette&#9;ACTION&#9;ActivatePalette&#9;ToolWindow" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548076600525" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -258,6 +313,9 @@
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="flow.cells" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -307,9 +365,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1440" height="817" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19098713" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19098713" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -318,7 +375,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3282967" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22068965" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27448276" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -328,17 +385,49 @@
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32827586" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.3297568" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19098713" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3282967" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27448276" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32827586" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.3297568" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/flow/SettlersGUI.java" />
@@ -366,117 +455,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/flow/TownPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-          <folding>
-            <element signature="e#486#487#0" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/MainContract.java">
+    <entry file="file://$PROJECT_DIR$/src/flow/Town.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        <state relative-caret-position="-892">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2268#2269#0" expanded="true" />
+            <element signature="e#2292#2293#0" expanded="true" />
+            <element signature="e#2682#2683#0" expanded="true" />
+            <element signature="e#2706#2707#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/GunSmith.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/lib/src.zip!/java.desktop/javax/swing/JOptionPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="-867">
+          <caret line="1830" column="20" selection-start-line="1830" selection-start-column="13" selection-end-line="1830" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/LivingQuarters.java">
+    <entry file="file://$PROJECT_DIR$/src/resources.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/GridLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="-155">
+          <caret line="165" column="11" selection-start-line="165" selection-start-column="11" selection-end-line="165" selection-end-column="11" />
           <folding>
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#5069#5070#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/TrainingRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#566#567#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/Soldier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#556#557#0" expanded="true" />
-            <element signature="e#584#585#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/BarrackRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/CellItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="234" column="24" lean-forward="true" selection-start-line="234" selection-start-column="24" selection-end-line="234" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/cells/TownHall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -487,22 +504,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flow/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/flow/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="540">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="342" column="21" selection-start-line="342" selection-start-column="21" selection-end-line="342" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/GunSmith.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="131" selection-start-line="10" selection-start-column="131" selection-end-line="10" selection-end-column="131" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#908#909#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/LivingQuarters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="9" column="118" selection-start-line="9" selection-start-column="118" selection-end-line="9" selection-end-column="118" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/BarrackRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="9" column="120" selection-start-line="9" selection-start-column="120" selection-end-line="9" selection-end-column="120" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="115" selection-start-line="10" selection-start-column="115" selection-end-line="10" selection-end-column="115" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/TrainingRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="122" selection-start-line="10" selection-start-column="122" selection-end-line="10" selection-end-column="122" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="9" column="124" selection-start-line="9" selection-start-column="124" selection-end-line="9" selection-end-column="124" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/CellItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#708#709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/TownHall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/cells/Soldier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="115" selection-start-line="9" selection-start-column="115" selection-end-line="9" selection-end-column="115" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#291#292#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3339">
+          <caret line="364" column="1" lean-forward="true" selection-start-line="364" selection-start-column="1" selection-end-line="364" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flow/MainContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/flow/MainPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
+        <state relative-caret-position="330">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
         </state>
       </provider>
     </entry>

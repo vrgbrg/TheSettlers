@@ -2,10 +2,12 @@ package flow.cells;
 
 import flow.Player;
 
+import javax.swing.*;
+
 public class SoldierLivingQuarters extends CellItem{
     private int price;
     public SoldierLivingQuarters(Player owner) {
-        super(owner, "Katonaszállás");
+        super(owner, "Katonaszállás", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
         this.price = 150;
     }
 

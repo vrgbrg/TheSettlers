@@ -2,14 +2,19 @@ package flow.cells;
 
 import flow.Player;
 
+import javax.swing.*;
+import java.awt.*;
+
 public abstract class CellItem {
 
     private final Player owner;
     private String title;
+    private ImageIcon image;
 
-    CellItem(Player owner, String title) {
+    CellItem(Player owner, String title, ImageIcon image) {
         this.owner = owner;
         this.title = title;
+        this.image = image;
     }
 
     public abstract boolean isMovable();
@@ -23,6 +28,10 @@ public abstract class CellItem {
 
     public Player getOwner() {
         return owner;
+    }
+
+    public ImageIcon layoutImage() {
+        return image;
     }
 
     public String toString() {
