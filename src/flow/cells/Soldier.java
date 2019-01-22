@@ -26,7 +26,7 @@ public class Soldier extends CellItem {
 
     @Override
     public int maxStep() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -39,5 +39,10 @@ public class Soldier extends CellItem {
         return 5;
     }
 
-
+    @Override
+    public String toString() {
+        return "Soldier{" +
+                "power=" + power +
+                '}';
+    }
 }

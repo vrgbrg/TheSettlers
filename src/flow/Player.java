@@ -29,6 +29,10 @@ public class Player {
         return roundPoint;
     }
 
+    public void setRoundPoint(int roundPoint) {
+        this.roundPoint = roundPoint;
+    }
+
     public int changeRoundPoint(int point) {
         return roundPoint -= point;
     }
@@ -68,6 +72,21 @@ public class Player {
 
     public void addTownItem(Position position, CellItem cells) {
         townTable[position.x][position.y] = cells;
+    }
+
+    public void drawTownTable() {
+        for(int i=0;i<townTable.length; i++) {
+            for(int j=0;j<townTable[i].length;j++){
+                if(townTable[i][j] == null) {
+                    System.out.print("0");
+                } else {
+                    System.out.print(townTable[i][j].toString());
+                }
+
+            }
+            System.out.println();
+        }
+        System.out.println("-------");
     }
 
     public CellItem getTownHallCellItem(Position position) {

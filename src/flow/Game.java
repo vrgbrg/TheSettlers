@@ -92,16 +92,6 @@ public class Game {
                 Math.abs(from.y - to.y) <= c1.attackRange();
     }
 
-    public boolean isValidBorder(Position from, Position to) {
-        CellItem c1 = getCellItem(from);
-        CellItem c2 = getCellItem(to);
-
-        return c1 != null && c2 != null &&
-                !c1.getOwner().equals(c2.getOwner()) &&
-                Math.abs(from.x - to.x) <= 11 &&
-                Math.abs(from.y - to.y) <= 11;
-    }
-
     public void removeItem(Position position) {
         table[position.x][position.y] = null;
     }

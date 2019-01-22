@@ -9,7 +9,7 @@ public interface MainContract {
         void showTable(CellItem[][] table);
         void showTownTable(CellItem[][] townTable);
         void setSelection(Position position, boolean selection);
-        void selectionText(Position position, boolean selection);
+        void showSelectionCellData(Position position, boolean selection);
         void updateCell(Position position, CellItem cells);
         void updateTownCell(Position position, CellItem cell);
         int selectFromList(String[] list);
@@ -19,8 +19,8 @@ public interface MainContract {
         void selectCurrentPlayer(Player player);
         List<String> getPlayerNames();
         void showCurrentCityData(Player player);
-        void showCurrentPlayerPoints(Player player);
-        void showCurrentCell(Player player, CellItem cell);
+        void showCurrentPlayerRoundPoints(Player player);
+        void showGameMessage(String text);
 
 
         void highlightTownHall(Range range, Position center, boolean isTable);

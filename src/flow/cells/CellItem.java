@@ -35,6 +35,6 @@ public abstract class CellItem {
     }
 
     public String toString() {
-        return title.charAt(0) + "" + owner.getName().charAt(6);
+        return title.charAt(0) + "" + owner.getName().charAt(0);
     }
 }

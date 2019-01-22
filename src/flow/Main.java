@@ -19,12 +19,14 @@ public class Main extends JFrame implements MainContract.View {
             Main main = new Main();
             main.setVisible(true);
         });
+
     }
 
     private MainContract.Presenter presenter;
 
     private JPanel layoutIndex;
-    private JLabel logo = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/compass.png"));
+    private JLabel layoutIndexLogo = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/compass.png"));
+    private JLabel layoutIndexTitle;
     private List<String> playerNames = new ArrayList<>();
     private JTextField player1;
     private JTextField player2;
@@ -35,7 +37,10 @@ public class Main extends JFrame implements MainContract.View {
     private JPanel layoutPlayers;
     private JLabel layoutRoundPoints;
     private JLabel layoutTownData;
-    private JLabel layoutGameText;
+    private JLabel layoutGameMessageTitle;
+    private JLabel layoutGameMessage;
+    private JLabel layoutCellDataTitle;
+    private JLabel layoutCellData;
     private JButton attack;
     private JButton back;
     private JButton next;
@@ -50,7 +55,6 @@ public class Main extends JFrame implements MainContract.View {
         JPanel root = new JPanel();
         root.setLayout(null);
         add(root);
-
 
         layoutMap = new JPanel();
         layoutMap.setBounds(10, 0, 780, 780);
@@ -87,20 +91,38 @@ public class Main extends JFrame implements MainContract.View {
         layoutTownData.setLayout(null);
         root.add(layoutTownData);
 
-        layoutGameText = new JLabel();
-        layoutGameText.setBounds(800,280,200,300);
-        layoutGameText.setBorder(BorderFactory.createLineBorder(new Color(73, 102,109), 6));
-        layoutGameText.setText("Teszt");
-        layoutGameText.setLayout(null);
-        root.add(layoutGameText);
+        layoutCellData = new JLabel();
+        layoutCellData.setBounds(800,300,200,190);
+        layoutCellData.setBorder(BorderFactory.createLineBorder(new Color(73, 102,109), 6));
+        layoutCellData.setText("Cell data");
+        layoutCellData.setLayout(null);
+        root.add(layoutCellData);
 
+        layoutCellDataTitle = new JLabel();
+        layoutCellDataTitle.setBounds(800,275,200,20);
+        layoutCellDataTitle.setFont(new Font("Arial", Font.BOLD,20));
+        layoutCellDataTitle.setText("Cell data");
+        layoutCellDataTitle.setLayout(null);
+        root.add(layoutCellDataTitle);
+
+        layoutGameMessage = new JLabel();
+        layoutGameMessage.setBounds(800,515,200,110);
+        layoutGameMessage.setBorder(BorderFactory.createLineBorder(new Color(73, 102,109), 6));
+        layoutGameMessage.setLayout(null);
+        root.add(layoutGameMessage);
+
+        layoutGameMessageTitle = new JLabel();
+        layoutGameMessageTitle.setBounds(800,490,200,25);
+        layoutGameMessageTitle.setFont(new Font("Arial", Font.BOLD,20));
+        layoutGameMessageTitle.setText("Game message");
+        layoutGameMessageTitle.setLayout(null);
+        root.add(layoutGameMessageTitle);
 
         attack = new JButton();
-        attack.setBounds(800,590,200,40);
+        attack.setBounds(800,630,200,40);
         attack.setLayout(null);
         attack.setIcon(SWORD_ICON);
         attack.addActionListener(e -> {
-
 
             repaint();
 
@@ -108,7 +130,7 @@ public class Main extends JFrame implements MainContract.View {
         root.add(attack);
 
         next = new JButton();
-        next.setBounds(800,640,200,40);
+        next.setBounds(800,680,200,40);
         next.setLayout(null);
         next.addActionListener(e -> {
 
@@ -120,13 +142,15 @@ public class Main extends JFrame implements MainContract.View {
         root.add(next);
 
         back = new JButton();
-        back.setBounds(800,690,200,40);
+        back.setBounds(800,730,200,40);
         back.setLayout(null);
         back.addActionListener(e -> {
 
             layoutTown.setVisible(false);
+            layoutTown.removeAll();
             presenter.redrawTable();
             layoutMap.setVisible(true);
+
 
 
             repaint();
@@ -135,30 +159,33 @@ public class Main extends JFrame implements MainContract.View {
         back.setText("Back");
         root.add(back);
 
-
         layoutIndex = new JPanel();
         layoutIndex.setBounds(0,0, 1010, 800);
         layoutIndex.setBackground(new Color(179, 207, 184));
         layoutIndex.setLayout(null);
         layoutIndex.setOpaque(true);
-        logo.setBounds(50,150,500,500);
-        layoutIndex.add(logo);
+        layoutIndexLogo.setBounds(50,200,500,500);
+        layoutIndexTitle = new JLabel("The Settlers");
+        layoutIndexTitle.setBounds(250,0,500,200);
+        layoutIndexTitle.setFont(new Font("Times New Roman",Font.BOLD,90));
+        layoutIndex.add(layoutIndexTitle);
+        layoutIndex.add(layoutIndexLogo);
         add(layoutIndex);
 
         player1 = new JTextField("Player 1");
-        player1.setBounds(560,280,350,50);
+        player1.setBounds(560,330,370,50);
         layoutIndex.add(player1);
 
         player2 = new JTextField("Player 2");
-        player2.setBounds(560,340,350,50);
+        player2.setBounds(560,390,370,50);
         layoutIndex.add(player2);
 
         player3 = new JTextField("Player 3");
-        player3.setBounds(560,400,350,50);
+        player3.setBounds(560,450,370,50);
         layoutIndex.add(player3);
 
         savePlayer = new JButton("Start");
-        savePlayer.setBounds(560,460,100,50);
+        savePlayer.setBounds(560,510,100,50);
         savePlayer.addActionListener(e -> {
            savePlayers(player1.getText(), player2.getText(), player3.getText());
 
@@ -172,7 +199,6 @@ public class Main extends JFrame implements MainContract.View {
             repaint();
         });
         layoutIndex.add(savePlayer);
-
 
         actionListener = e -> {
 
@@ -221,7 +247,7 @@ public class Main extends JFrame implements MainContract.View {
                 btn.addActionListener(actionListener);
                 btn.setBounds(j * 19 + 10, i * 19 + 10, 19, 19);
                 btn.setFont(new Font("Arial", Font.PLAIN, 7));
-                btn.setBackground(Color.LIGHT_GRAY);
+                btn.setBackground(new Color(228,228,228));
                 btn.setBorder(BorderFactory.createLineBorder(Color.white));
                 layoutMap.add(btn);
 
@@ -259,7 +285,7 @@ public class Main extends JFrame implements MainContract.View {
                 });
                 btn.setBounds(j * 69 + 10, i * 69 + 10, 69, 69);
                 btn.setFont(new Font("Arial", Font.PLAIN, 7));
-                btn.setBackground(Color.LIGHT_GRAY);
+                btn.setBackground(new Color(228,228,228));
                 btn.setBorder(BorderFactory.createLineBorder(Color.white));
                 layoutTown.add(btn);
 
@@ -282,13 +308,6 @@ public class Main extends JFrame implements MainContract.View {
         Component component = layoutMap.getComponent(position.x * 40 + position.y);
 
         ((JButton)component).setBorder(BorderFactory.createLineBorder(Color.GREEN));
-    }
-
-    @Override
-    public void selectionText(Position position, boolean selection) {
-        Component component = layoutMap.getComponent(position.x * 40 + position.y);
-
-        layoutGameText.setText(component.toString());
     }
 
     @Override
@@ -369,20 +388,25 @@ public class Main extends JFrame implements MainContract.View {
 
     public void showCurrentCityData(Player player) {
         layoutTownData.setText("<html>" + "<b>" + "</b>" +"<b>" + player.getName() + "</b>" + "<b>" + "<br> "+ "Gold: " + "</b>" + String.valueOf(player.getGold())+ "<br>" + "<b>" + "Population: " + "</b>" + String.valueOf(player.getActualPopulation() + "</html>"));
-        player.getGold();
         layoutTownData.repaint();
     }
 
-    public void showCurrentPlayerPoints(Player player) {
+    public void showCurrentPlayerRoundPoints(Player player) {
         layoutRoundPoints.setText("RoundPoints: " + String.valueOf(player.getRoundPoint()));
-        player.getRoundPoint();
+        repaint();
     }
 
-    public void showCurrentCell(Player player, CellItem cell) {
-        layoutGameText.setText("Cell data: " + cell.getOwner().toString());
-        cell.getOwner().toString();
+    public void showGameMessage(String text) {
+        layoutGameMessage.setText(text);
     }
 
+    @Override
+    public void showSelectionCellData(Position position, boolean selection) {
+       /* Component component = layoutMap.getComponent(position.x * 40 + position.y);
+
+        layoutGameMessage.setText(component.toString());
+        */
+    }
 
     @Override
     public void highlightRange(Range range, Position center) {
@@ -406,10 +430,11 @@ public class Main extends JFrame implements MainContract.View {
                         center.x == i || center.y == j) {
                     int index = i * 40 + j;
                     ((JButton) layoutMap.getComponent(index))
-                            .setBorder(BorderFactory.createLineBorder(Color.red));
+                            .setBorder(BorderFactory.createLineBorder(new Color(73, 102,109)));
                 }
             }
         }
+        repaint();
     }
 
     @Override
