@@ -18,9 +18,10 @@ public abstract class CellItem {
     }
 
     public abstract boolean isMovable();
-    public abstract int maxStep();
     public abstract boolean canMoveDiagonally();
+    public abstract int maxStep();
     public abstract int attackRange();
+    public abstract int getPrice();
 
     public String getTitle() {
         return title;

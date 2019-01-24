@@ -8,7 +8,7 @@ public class TrainingRoom extends CellItem {
     private int price;
 
     public TrainingRoom(Player owner) {
-        super(owner, "Kiképzőhely", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
+        super(owner, "Training room", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/trainingroom.png"));
         this.price = 400;
     }
 
@@ -18,13 +18,13 @@ public class TrainingRoom extends CellItem {
     }
 
     @Override
-    public int maxStep() {
-        return 0;
+    public boolean canMoveDiagonally() {
+        return false;
     }
 
     @Override
-    public boolean canMoveDiagonally() {
-        return false;
+    public int maxStep() {
+        return 0;
     }
 
     public int getPrice() {
@@ -34,5 +34,12 @@ public class TrainingRoom extends CellItem {
     @Override
     public int attackRange() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "TrainingRoom{" +
+                "price=" + price +
+                '}';
     }
 }

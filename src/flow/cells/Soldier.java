@@ -25,18 +25,23 @@ public class Soldier extends CellItem {
     }
 
     @Override
-    public int maxStep() {
-        return 2;
-    }
-
-    @Override
     public boolean canMoveDiagonally() {
         return true;
     }
 
     @Override
+    public int maxStep() {
+        return 3;
+    }
+
+    @Override
     public int attackRange() {
         return 5;
+    }
+
+    @Override
+    public int getPrice() {
+        return 0;
     }
 
     @Override

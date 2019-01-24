@@ -6,9 +6,11 @@ import javax.swing.*;
 
 public class LivingQuarters extends CellItem {
     private int price;
+    public final int storageLivingQuarters;
     public LivingQuarters(Player owner) {
-        super(owner, "Szállás", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
+        super(owner, "Living Quarters", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/livingq.png"));
         this.price = 100;
+        this.storageLivingQuarters = 2000;
     }
 
     @Override
@@ -17,13 +19,13 @@ public class LivingQuarters extends CellItem {
     }
 
     @Override
-    public int maxStep() {
-        return 0;
+    public boolean canMoveDiagonally() {
+        return false;
     }
 
     @Override
-    public boolean canMoveDiagonally() {
-        return false;
+    public int maxStep() {
+        return 0;
     }
 
     public int getPrice() {
@@ -33,5 +35,12 @@ public class LivingQuarters extends CellItem {
     @Override
     public int attackRange() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "LivingQuarters{" +
+                "price=" + price +
+                '}';
     }
 }

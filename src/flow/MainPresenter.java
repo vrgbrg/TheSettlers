@@ -2,13 +2,19 @@ package flow;
 
 import flow.cells.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
     private Game game;
+    public Set<Position> townHallPosition;
 
     public MainPresenter(MainContract.View view) {
         this.view = view;
         game = new Game();
+        this.townHallPosition = new HashSet<Position>();
     }
 
     @Override
@@ -17,7 +23,7 @@ public class MainPresenter implements MainContract.Presenter {
 
         initializeTownHall();
 
-        view.showTable(game.getTable());
+        view.showMap(game.getTable());
         view.showPlayers(game.getPlayers());
         view.selectCurrentPlayer(game.getCurrentPlayer());
         refreshDataLayout();
@@ -28,7 +34,6 @@ public class MainPresenter implements MainContract.Presenter {
         Player player = game.getCurrentPlayer();
         player.addTownItem(new Position(5, 5), new TownHall(player));
     }
-
 
     @Override
     public void onTableItemClicked(Position position, boolean isTable) {
@@ -43,14 +48,10 @@ public class MainPresenter implements MainContract.Presenter {
 
         CellItem item = game.getCellItem(position);
 
-        // view.showCurrentPlayerRoundPoints(currentPlayer);
-        // view.showCurrentCityData(currentPlayer);
-
         refreshDataLayout();
 
         if (currentPlayer.getRoundPoint() <= 0) {
-            cityBorn(currentPlayer);
-            cityDeath(currentPlayer);
+            townDataChange(currentPlayer);
             nextPlayer(position);
             currentPlayer.setRoundPoint(3);
         }
@@ -64,13 +65,19 @@ public class MainPresenter implements MainContract.Presenter {
             if (!cellItem.getOwner().equals(currentPlayer)) {
                 if (selectedPosition != null) {
                     CellItem selectedItem = game.getCellItem(selectedPosition);
+                    CellItem selectedTownItem = game.getCellItem(selectedPosition);
+                    view.showCellData(selectedTownItem.toString());
                     if (selectedItem.getOwner().equals(currentPlayer)) {
                         view.showSelectionCellData(selectedPosition, true);
-                        if (game.isValidAttack(selectedPosition, position)) {
-                            game.removeItem(position);
-                            view.updateCell(position, null);
-                            removeHighlights();
-                            view.setSelection(selectedPosition, false);
+                        if (game.isValidAttack(selectedPosition, position, true)) {
+                            if (item instanceof TownHall && !(item.getOwner().equals(currentPlayer))) {
+                                view.showBattle(currentPlayer, getOpponentPlayer(position), false);
+                            } else if( item instanceof Soldier && !(item.getOwner().equals(currentPlayer))) {
+                                game.removeItem(position);
+                                view.updateCell(position, null);
+                                removeHighlights();
+                                view.setSelection(selectedPosition, false);
+                            }
                         }
                     }
                 }
@@ -80,11 +87,11 @@ public class MainPresenter implements MainContract.Presenter {
                     if (cellItem.getOwner().equals(currentPlayer)) {
                         highlightItemRange(position, cellItem);
 
-                        for (int i = 0; i < 50; ++i) {
-                            for (int j = 0; j < 50; ++j) {
+                        for (int i = 0; i < 40; ++i) {
+                            for (int j = 0; j < 40; ++j) {
                                 Position to = new Position(i, j);
                                 if (!to.equals(position)) {
-                                    view.highlightAttackableItem(to, game.isValidAttack(position, to));
+                                    view.highlightAttackableItem(to, game.isValidAttack(position, to, true));
                                 }
                             }
                         }
@@ -94,6 +101,8 @@ public class MainPresenter implements MainContract.Presenter {
         } else {
             if (selectedPosition != null) {
                 CellItem selectedItem = game.getCellItem(selectedPosition);
+                CellItem selectedTownItem = game.getCellItem(selectedPosition);
+                view.showCellData(selectedTownItem.toString());
                 if (selectedItem.isMovable() &&
                         game.isValidStep(selectedPosition, position) &&
                         selectedItem.getOwner().equals(currentPlayer)) {
@@ -120,43 +129,49 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void redrawTable() {
-        view.showTable(game.getTable());
+        view.showMap(game.getTable());
     }
 
     private void highlightItemRange(Position itemPosition, CellItem item) {
         view.removeHighlight();
 
         Position p1 = new Position(
-                Math.max(0, itemPosition.x - item.maxStep()),
-                Math.max(0, itemPosition.y - item.maxStep()));
+                Math.max(0, itemPosition.x - 2),
+                Math.max(0, itemPosition.y - 2));
         Position p2 = new Position(
-                Math.min(49, itemPosition.x + item.maxStep()),
-                Math.min(49, itemPosition.y + item.maxStep()));
+                Math.min(39, itemPosition.x + 2),
+                Math.min(39, itemPosition.y + 2));
 
         Range range = new Range(p1, p2);
-        view.highlightRange(range, item.canMoveDiagonally() ? null : itemPosition);
+        view.highlightRange(range, itemPosition);
     }
 
-    private void highlightTownHallRange(Position itemPosition, boolean isTable) {
+    private void highlightTownHallRange(Position itemPosition) {
         view.removeHighlight();
 
         Position p1 = new Position(
                 Math.max(0, itemPosition.x - 5),
                 Math.max(0, itemPosition.y - 5));
         Position p2 = new Position(
-                Math.min(49, itemPosition.x + 5),
-                Math.min(49, itemPosition.y + 5));
+                Math.min(39, itemPosition.x + 5),
+                Math.min(39, itemPosition.y + 5));
 
         Range range = new Range(p1, p2);
-        view.highlightTownHall(range, townHallBorder(game.getTable(), game.getCurrentPlayer()),true);
+        view.highlightTownHall(range, townHallCenter(game.getTable(), game.getCurrentPlayer()), true);
+    }
+
+    private void highlightCurrentPlayer() {
+        List<Position> currentPlayersItemPositions = game.getCurrentPlayersItemPositions();
+        view.highlightPlayer(currentPlayersItemPositions);
     }
 
     private void nextPlayer(Position position) {
         CellItem[][] table = game.getTable();
         Player currentPlayer = game.getCurrentPlayer();
         CellItem cellItem = game.getCellItem(position);
+        highlightCurrentPlayer();
         game.nextPlayer();
-        cityTaxCalculator(game.getCurrentPlayer());
+        game.getCurrentPlayer().setRoundPoint(3);
         refreshDataLayout();
 
 
@@ -165,10 +180,8 @@ public class MainPresenter implements MainContract.Presenter {
             //game.deselectItem();
             view.setSelection(selectedPosition, false);
         }
-        System.out.println("next kiscica");
-        if(hasTypeOfCell(table, "TownHall", currentPlayer)) {
-            System.out.println("kiscica");
-            highlightTownHallRange(position, true);
+        if (hasTypeOfCell(table, "TownHall", currentPlayer)) {
+            highlightTownHallRange(townHallCenter(table, currentPlayer));
         }
     }
 
@@ -176,18 +189,18 @@ public class MainPresenter implements MainContract.Presenter {
     public void skipPlayer() {
         CellItem[][] table = game.getTable();
         game.nextPlayer();
+        townDataChange(game.getCurrentPlayer());
         view.selectCurrentPlayer(game.getCurrentPlayer());
-        if(hasTypeOfCell(table, "TownHall", game.getCurrentPlayer())) {
-            highlightTownHallRange(townHallBorder(table, game.getCurrentPlayer()),  true);
-        }
-        refreshDataLayout();
         game.getCurrentPlayer().setRoundPoint(3);
+        refreshDataLayout();
     }
 
 
     private boolean changeItemSelection(Position position, Position selectedPosition) {
         game.selectItem(position);
         view.setSelection(position, true);
+        view.showCellData(game.getCellItem(position).toString());
+        refreshDataLayout();
 
         if (selectedPosition != null) {
             view.setSelection(selectedPosition, false);
@@ -212,6 +225,8 @@ public class MainPresenter implements MainContract.Presenter {
         currentPlayer.changeRoundPoint(1);
 
         view.setSelection(position, true);
+        view.showCellData(game.getCellItem(position).toString());
+        refreshDataLayout();
 
         removeHighlights();
     }
@@ -255,10 +270,8 @@ public class MainPresenter implements MainContract.Presenter {
                     currentPlayer.changeRoundPoint(2);
                     refreshDataLayout();
                 } else {
-                    if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                        String text = "Nincs elég pontod!";
-                        System.out.println("Nincs elég pontod!");
-                        view.showGameMessage(text);
+                    if (currentPlayer.getRoundPoint() - 2 <= 0) {
+                        view.showGameMessage("Nincs elég pontod!");
                     }
                 }
             }
@@ -270,146 +283,59 @@ public class MainPresenter implements MainContract.Presenter {
 
             view.updateCell(position, cellItem);
 
-            if(hasTypeOfCell(table, "TownHall", currentPlayer)) {
-                highlightTownHallRange(position,  true);
+            if (hasTypeOfCell(table, "TownHall", currentPlayer)) {
+                highlightTownHallRange(townHallCenter(table, currentPlayer));
             }
         }
 
     }
 
     private void addNewTownItem(Position position) {
-        String[] buildings = {"Bank", "Kaszárnya", "Fegyverkovács műhely", "Kiképzőhely", "Szállás", "Katonaszállás"};
+        String[] buildings = {"Bank - 700 Gold", "GunSmith - 300 Gold", "TrainingRoom - 400 Gold", "LivingQ - 100 Gold", "Soldier LivingQ - 150 Gold", "Barrack - 200 Gold"};
+        String[] buildingsWithoutBarrackRoom = {"Bank -  700 Gold", "GunSmith - 300 Gold", "TrainingRoom - 400 Gold", "LivingQ - 100 Gold", "Soldier LivingQ - 150 Gold"};
         CellItem cellItem = null;
         Player currentPlayer = game.getCurrentPlayer();
+        CellItem[][] townTable = currentPlayer.getTownTable();
 
-        int buildingChoice = view.selectFromList(buildings);
-        if (buildingChoice == 0) {
-            if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - 700 >=0) {
+        int buildingChoice;
+        if (hasTypeOfCell(townTable, "GunSmith", currentPlayer)) {
+            buildingChoice = view.selectFromList(buildings);
+        } else {
+            buildingChoice = view.selectFromList(buildingsWithoutBarrackRoom);
+        }
+
+        switch (buildingChoice) {
+            case 0:
                 cellItem = new Bank(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((Bank) cellItem).getPrice());
-                refreshDataLayout();
-            } else {
-                if(currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - 700 <= 0) {
-                    String text = "Nincs elég pontod és aranyad!";
-                    System.out.println("Nincs elég pontod és aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                    String text = "Nincs elég aranyad!";
-                    System.out.println("Nincs elég aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getGold() - 700 <= 0){
-                    String text = "Nincs elég pontod!";
-                    System.out.println("Nincs elég pontod!");
-                    view.showGameMessage(text);
-                }
-            }
-        } else if (buildingChoice == 1) {
-            if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - 200 >=0) {
-                cellItem = new BarrackRoom(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((BarrackRoom) cellItem).getPrice());
-                refreshDataLayout();
-            } else {
-                if(currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - 200 <= 0) {
-                    String text = "Nincs elég pontod és aranyad!";
-                    System.out.println("Nincs elég pontod és aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                    String text = "Nincs elég aranyad!";
-                    System.out.println("Nincs elég aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getGold() - 200 <= 0){
-                    String text = "Nincs elég pontod!";
-                    System.out.println("Nincs elég pontod!");
-                    view.showGameMessage(text);
-                }
-            }
-        } else if (buildingChoice == 2) {
-            if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - 300 >=0) {
+                break;
+            case 1:
                 cellItem = new GunSmith(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((GunSmith) cellItem).getPrice());
-                refreshDataLayout();
-            } else {
-                if(currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - 300 <= 0) {
-                    String text = "Nincs elég pontod és aranyad!";
-                    System.out.println("Nincs elég pontod és aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                    String text = "Nincs elég aranyad!";
-                    System.out.println("Nincs elég aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getGold() - 300 <= 0){
-                    String text = "Nincs elég pontod!";
-                    System.out.println("Nincs elég pontod!");
-                    view.showGameMessage(text);
-                }
-            }
-        } else if (buildingChoice == 3) {
-            if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - 400 >=0) {
+                break;
+            case 2:
                 cellItem = new TrainingRoom(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((TrainingRoom) cellItem).getPrice());
-                refreshDataLayout();
-            } else {
-                if(currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - 400 <= 0) {
-                    String text = "Nincs elég pontod és aranyad!";
-                    System.out.println("Nincs elég pontod és aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                    String text = "Nincs elég aranyad!";
-                    System.out.println("Nincs elég aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getGold() - 400 <= 0){
-                    String text = "Nincs elég pontod!";
-                    System.out.println("Nincs elég pontod!");
-                    view.showGameMessage(text);
-                }
-            }
-        } else if (buildingChoice == 4) {
-            if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - 100 >=0) {
+                break;
+            case 3:
                 cellItem = new LivingQuarters(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((LivingQuarters) cellItem).getPrice());
-                refreshDataLayout();
-            } else {
-                if(currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - 100 <= 0) {
-                    String text = "Nincs elég pontod és aranyad!";
-                    System.out.println("Nincs elég pontod és aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                    String text = "Nincs elég aranyad!";
-                    System.out.println("Nincs elég aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getGold() - 100 <= 0){
-                    String text = "Nincs elég pontod!";
-                    System.out.println("Nincs elég pontod!");
-                    view.showGameMessage(text);
-                }
-            }
-        } else if (buildingChoice == 5) {
-            if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - 150 >=0) {
+                break;
+            case 4:
                 cellItem = new SoldierLivingQuarters(currentPlayer);
-                currentPlayer.changeRoundPoint(2);
-                currentPlayer.changeGold(((SoldierLivingQuarters) cellItem).getPrice());
-                refreshDataLayout();
-            } else {
-                if(currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - 150 <= 0) {
-                    String text = "Nincs elég pontod és aranyad!";
-                    System.out.println("Nincs elég pontod és aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getRoundPoint() - 2 <= 0) {
-                    String text = "Nincs elég aranyad!";
-                    System.out.println("Nincs elég aranyad!");
-                    view.showGameMessage(text);
-                } else if(currentPlayer.getGold() - 150 <= 0){
-                    String text = "Nincs elég pontod!";
-                    System.out.println("Nincs elég pontod!");
-                    view.showGameMessage(text);
+                break;
+            case 5:
+                cellItem = new BarrackRoom(currentPlayer);
+                break;
+        }
 
-                }
-
+        if (currentPlayer.getRoundPoint() - 2 >= 0 && currentPlayer.getGold() - cellItem.getPrice() >= 0) {
+            currentPlayer.changeRoundPoint(2);
+            currentPlayer.changeGold(cellItem.getPrice());
+            refreshDataLayout();
+        } else {
+            if (currentPlayer.getRoundPoint() - 2 <= 0 && currentPlayer.getGold() - cellItem.getPrice() <= 0) {
+                view.showGameMessage("Nincs elég pontod és aranyad!");
+            } else if (currentPlayer.getRoundPoint() - 2 <= 0) {
+                view.showGameMessage("Nincs elég aranyad!");
+            } else if (currentPlayer.getGold() - cellItem.getPrice() <= 0) {
+                view.showGameMessage("Nincs elég pontod!");
             }
         }
 
@@ -437,6 +363,14 @@ public class MainPresenter implements MainContract.Presenter {
                     if (table[i][j] instanceof BarrackRoom && table[i][j].getOwner().equals(player)) {
                         return true;
                     }
+                } else if (building.equals("GunSmith")) {
+                    if (table[i][j] instanceof GunSmith && table[i][j].getOwner().equals(player)) {
+                        return true;
+                    }
+                } else if (building.equals("Bank")) {
+                    if (table[i][j] instanceof Bank && table[i][j].getOwner().equals(player)) {
+                        return true;
+                    }
                 }
 
             }
@@ -445,13 +379,14 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
 
-    private Position townHallBorder(CellItem[][] table, Player player) {
+    private Position townHallCenter(CellItem[][] table, Player player) {
         Position cell = null;
 
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
                 if (table[i][j] instanceof TownHall && table[i][j].getOwner().equals(player)) {
                     cell = new Position(i, j);
+                    townHallPosition.add(cell);
                 }
             }
         }
@@ -460,40 +395,83 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
 
-    private void cityTaxCalculator(Player player) {
+    private void townDataChange(Player player) {
+        int actual = player.getActualPopulation();
+        int goldChange;
+        System.out.println("Actual: " + actual);
 
-        double t = player.getActualPopulation() * 0.1;
+        int populationChange = player.getActualPopulation() + populationBorn(game.getCurrentPlayer()) - populationDeath(game.getCurrentPlayer());
+
+        if (hasTypeOfCell(player.getTownTable(), "Bank", player)) {
+            goldChange = player.changeGold((int) ((taxCalculator(game.getCurrentPlayer())) * 1.2));
+        } else{
+            goldChange = taxCalculator(game.getCurrentPlayer());
+        }
+
+        System.out.println("Actual population:" + populationChange);
+        System.out.println("Actual gold: " + goldChange);
+    }
+
+    public int populationDeath(Player player) {
+        int actual = player.getActualPopulation();
+        int randomNumberDeath = random(0, 9);
+        double d = actual * (randomNumberDeath / 100.0);
+
+        int death = (int) d;
+        System.out.println("Death: " + death);
+        return death;
+    }
+
+    public int populationBorn(Player player) {
+        int actual = player.getActualPopulation();
+        int randomNumberBorn = random(0, 15);
+        double b = actual * (randomNumberBorn / 100.0);
+
+        int born = (int) b;
+        System.out.println("Born: " + born);
+        return born;
+    }
+
+    public int taxCalculator(Player player) {
+        int actual = player.getActualPopulation();
+
+        double t = actual * 0.1;
         int tax = (int) t;
 
-        player.changeGold(tax);
+        System.out.println("Tax: " + tax);
 
+        return tax;
     }
 
-    private void cityDeath(Player player) {
+    public int getCurrentPlayerPeopleStorage() {
+        int countLivingQuarter = 0;
 
-        int randomNumber = random(0, 9);
-
-        double d = player.getActualPopulation() * (randomNumber/100);
-        int death = (int) d;
-
-        player.populationDecrease(death);
-
+        Player currentPlayer = game.getCurrentPlayer();
+        for (int i = 0; i < currentPlayer.getTownTable().length; i++) {
+            for (int j = 0; j < currentPlayer.getTownTable()[i].length; j++) {
+                Position position = new Position(i, j);
+                CellItem cellItem = currentPlayer.getTownHallCellItem(position);
+                if (cellItem instanceof LivingQuarters) {
+                    countLivingQuarter += 1000;
+                }
+            }
+        }
+        return 2000 + countLivingQuarter;
     }
 
-    private void cityBorn(Player player) {
-
-        int randomNumber = random(0, 15);
-
-        double b = player.getActualPopulation() * (randomNumber/100);
-        int born = (int) b;
-
-        player.populationIncrease(born);
-
+    public Player getOpponentPlayer(Position position) {
+        return game.getCellItem(position).getOwner();
     }
+
 
     private void refreshDataLayout() {
-        view.showCurrentCityData(game.getCurrentPlayer());
-        view.showCurrentPlayerRoundPoints(game.getCurrentPlayer());
+        Player currentPlayer = game.getCurrentPlayer();
+        getCurrentPlayerPeopleStorage();
+        view.showCurrentCityData(currentPlayer);
+        view.showCurrentPlayerRoundPoints(currentPlayer);
+        System.out.println(townHallPosition);
     }
+
+
 
 }

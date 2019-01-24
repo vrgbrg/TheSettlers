@@ -4,13 +4,14 @@ import flow.cells.CellItem;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends JFrame implements MainContract.View {
 
-    private static final ImageIcon SWORD_ICON = new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/swords.png");
+    private static final ImageIcon BULB_ICON = new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/bulb.png");
 
     private ActionListener actionListener;
 
@@ -25,6 +26,9 @@ public class Main extends JFrame implements MainContract.View {
     private MainContract.Presenter presenter;
 
     private JPanel layoutIndex;
+    private JPanel layoutHelp;
+    private JLabel layoutHelpTitle;
+    private JButton backHelpButton;
     private JLabel layoutIndexLogo = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/compass.png"));
     private JLabel layoutIndexTitle;
     private List<String> playerNames = new ArrayList<>();
@@ -41,9 +45,15 @@ public class Main extends JFrame implements MainContract.View {
     private JLabel layoutGameMessage;
     private JLabel layoutCellDataTitle;
     private JLabel layoutCellData;
-    private JButton attack;
-    private JButton back;
-    private JButton next;
+    private JButton helpButton;
+    private JButton backButton;
+    private JButton nextButton;
+    private JPanel layoutBattle;
+    private JLabel layoutBattleTitle;
+    private JLabel battlePlayer1;
+    private JLabel battlePlayer2;
+    private JLabel battleCounterPlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/counter.gif"));
+    private JLabel battleCounterPlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/counter.gif"));
 
 
     public Main() {
@@ -86,20 +96,20 @@ public class Main extends JFrame implements MainContract.View {
         root.add(layoutRoundPoints);
 
         layoutTownData = new JLabel();
-        layoutTownData.setBounds(800, 170, 200, 100);
+        layoutTownData.setBounds(800, 170, 200, 110);
         layoutTownData.setBorder(BorderFactory.createLineBorder(new Color(73, 102,109), 6));
         layoutTownData.setLayout(null);
         root.add(layoutTownData);
 
         layoutCellData = new JLabel();
-        layoutCellData.setBounds(800,300,200,190);
+        layoutCellData.setBounds(800,310,200,180);
         layoutCellData.setBorder(BorderFactory.createLineBorder(new Color(73, 102,109), 6));
         layoutCellData.setText("Cell data");
         layoutCellData.setLayout(null);
         root.add(layoutCellData);
 
         layoutCellDataTitle = new JLabel();
-        layoutCellDataTitle.setBounds(800,275,200,20);
+        layoutCellDataTitle.setBounds(800,285,200,20);
         layoutCellDataTitle.setFont(new Font("Arial", Font.BOLD,20));
         layoutCellDataTitle.setText("Cell data");
         layoutCellDataTitle.setLayout(null);
@@ -118,33 +128,36 @@ public class Main extends JFrame implements MainContract.View {
         layoutGameMessageTitle.setLayout(null);
         root.add(layoutGameMessageTitle);
 
-        attack = new JButton();
-        attack.setBounds(800,630,200,40);
-        attack.setLayout(null);
-        attack.setIcon(SWORD_ICON);
-        attack.addActionListener(e -> {
+        helpButton = new JButton();
+        helpButton.setBounds(800,630,200,40);
+        helpButton.setLayout(null);
+        helpButton.setIcon(BULB_ICON);
+        helpButton.addActionListener(e -> {
 
             repaint();
+            layoutMap.removeAll();
+            layoutMap.add(layoutHelp);
+            layoutHelp.setVisible(true);
 
         });
-        root.add(attack);
+        root.add(helpButton);
 
-        next = new JButton();
-        next.setBounds(800,680,200,40);
-        next.setLayout(null);
-        next.addActionListener(e -> {
+        nextButton = new JButton();
+        nextButton.setBounds(800,680,200,40);
+        nextButton.setLayout(null);
+        nextButton.addActionListener(e -> {
 
             presenter.skipPlayer();
             repaint();
 
         });
-        next.setText("Next");
-        root.add(next);
+        nextButton.setText("Next");
+        root.add(nextButton);
 
-        back = new JButton();
-        back.setBounds(800,730,200,40);
-        back.setLayout(null);
-        back.addActionListener(e -> {
+        backButton = new JButton();
+        backButton.setBounds(800,730,200,40);
+        backButton.setLayout(null);
+        backButton.addActionListener(e -> {
 
             layoutTown.setVisible(false);
             layoutTown.removeAll();
@@ -156,8 +169,8 @@ public class Main extends JFrame implements MainContract.View {
             repaint();
 
         });
-        back.setText("Back");
-        root.add(back);
+        backButton.setText("Back");
+        root.add(backButton);
 
         layoutIndex = new JPanel();
         layoutIndex.setBounds(0,0, 1010, 800);
@@ -200,6 +213,40 @@ public class Main extends JFrame implements MainContract.View {
         });
         layoutIndex.add(savePlayer);
 
+        layoutHelp = new JPanel();
+        layoutHelp.setBounds(10, 0, 780, 780);
+        layoutHelp.setBackground(new Color(124,163,151));
+        layoutHelp.setLayout(null);
+        layoutHelpTitle = new JLabel("Help");
+        layoutHelpTitle.setBounds(50,0,500,200);
+        layoutHelpTitle.setFont(new Font("Arial",Font.BOLD,50));
+        layoutHelpTitle.setForeground(Color.white);
+        layoutHelp.add(layoutHelpTitle);
+
+        backHelpButton = new JButton();
+        backHelpButton.setBounds(800,730,200,40);
+        backHelpButton.setLayout(null);
+        backHelpButton.addActionListener(e -> {
+
+            presenter.init();
+
+            remove(layoutHelp);
+            add(root);
+            presenter.redrawTable();
+            layoutMap.setVisible(true);
+
+
+            repaint();
+
+        });
+        backHelpButton.setText("Back");
+        layoutHelp.add(backHelpButton);
+
+        layoutBattle = new JPanel();
+        layoutBattle.setBounds(10, 0, 780, 780);
+        layoutBattle.setBackground(new Color(124,163,151));
+        layoutBattle.setLayout(null);
+
         actionListener = e -> {
 
             String[] s = e.getActionCommand().split(" ");
@@ -236,7 +283,7 @@ public class Main extends JFrame implements MainContract.View {
     }
 
     @Override
-    public void showTable(CellItem[][] table) {
+    public void showMap(CellItem[][] table) {
         layoutMap.removeAll();
 
         for (int i = 0; i < table.length; i++) {
@@ -299,20 +346,157 @@ public class Main extends JFrame implements MainContract.View {
             }
 
         }
+
         layoutMap.setVisible(false);
     }
 
+    public void showBattle(Player player, Player opponent, boolean isTable) {
+        int randomPlayer1 = random(1,6);
+        int randomPlayer2 = random(1,6);
+
+
+        int battlePointsPlayer1 = 0;
+        int battlePointsPlayer2 = 0;
+
+
+        JLabel battleOnePlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/1.png"));
+        JLabel battleTwoPlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/2.png"));
+        JLabel battleThreePlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/3.png"));
+        JLabel battleFourPlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/4.png"));
+        JLabel battleFivePlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/5.png"));
+        JLabel battleSixPlayer1 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/6.png"));
+        JLabel battleOnePlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/1.png"));
+        JLabel battleTwoPlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/2.png"));
+        JLabel battleThreePlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/3.png"));
+        JLabel battleFourPlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/4.png"));
+        JLabel battleFivePlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/5.png"));
+        JLabel battleSixPlayer2 = new JLabel(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/6.png"));
+
+        layoutMap.removeAll();
+        layoutMap.add(layoutBattle);
+        layoutBattle.setVisible(true);
+        layoutBattle.setLayout(null);
+        layoutBattleTitle = new JLabel("Battle");
+        layoutBattleTitle.setBounds(250,0,500,200);
+        layoutBattleTitle.setFont(new Font("Arial",Font.BOLD,90));
+        layoutBattleTitle.setForeground(Color.white);
+        layoutBattle.add(layoutBattleTitle);
+        battlePlayer1 = new JLabel(player.getName());
+        battlePlayer1.setBounds(50,300,300,100);
+        battlePlayer1.setFont(new Font("Arial",Font.PLAIN,50));
+        battlePlayer1.setForeground(Color.white);
+        battlePlayer2 = new JLabel(opponent.getName());
+        battlePlayer2.setBounds(515,300,300,100);
+        battlePlayer2.setFont(new Font("Arial",Font.PLAIN,50));
+        battlePlayer2.setForeground(Color.white);
+        battleCounterPlayer1.setBounds(20,400,250,250);
+        battleCounterPlayer1.setVisible(true);
+        layoutBattle.add(battleCounterPlayer1);
+        battleCounterPlayer2.setBounds(485,400,250,250);
+        battleCounterPlayer2.setVisible(true);
+        layoutBattle.add(battleCounterPlayer2);
+        JButton battleButtonPlayer1 = new JButton(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/swords.png"));
+        battleButtonPlayer1.setBounds(100,650,100,50);
+        layoutBattle.add(battleButtonPlayer1);
+        JButton battleButtonPlayer2 = new JButton(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/swords.png"));
+        battleButtonPlayer2.setBounds(565,650,100,50);
+        layoutBattle.add(battleButtonPlayer2);
+        JButton battleButtonRefresh = new JButton(new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/refresh.png"));
+        battleButtonRefresh.setBounds(365,650,50,50);
+        layoutBattle.add(battleButtonRefresh);
+
+        battleButtonRefresh.addActionListener(e -> {
+            battleCounterPlayer1.setVisible(true);
+            layoutBattle.add(battleCounterPlayer1);
+            battleCounterPlayer2.setVisible(true);
+            layoutBattle.add(battleCounterPlayer2);
+
+        });
+
+        battleButtonPlayer1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                battleCounterPlayer1.setVisible(false);
+                if(randomPlayer1 == 1) {
+                    battleOnePlayer1.setVisible(true);
+                    battleOnePlayer1.setBounds(20,400,250,250);
+                    layoutBattle.add(battleOnePlayer1);
+                } else if(randomPlayer1 == 2) {
+                    battleTwoPlayer1.setVisible(true);
+                    battleTwoPlayer1.setBounds(20,400,250,250);
+                    layoutBattle.add(battleTwoPlayer1);
+                } else if(randomPlayer1 == 3) {
+                    battleThreePlayer1.setVisible(true);
+                    battleThreePlayer1.setBounds(20,400,250,250);
+                    layoutBattle.add(battleThreePlayer1);
+                } else if(randomPlayer1 == 4) {
+                    battleFourPlayer1.setVisible(true);
+                    battleFourPlayer1.setBounds(20,400,250,250);
+                    layoutBattle.add(battleFourPlayer1);
+                } else if(randomPlayer1 == 5) {
+                    battleFivePlayer1.setVisible(true);
+                    battleFivePlayer1.setBounds(20,400,250,250);
+                    layoutBattle.add(battleFivePlayer1);
+                } else if(randomPlayer1 == 6) {
+                    battleSixPlayer1.setVisible(true);
+                    battleSixPlayer1.setBounds(20,400,250,250);
+                    layoutBattle.add(battleSixPlayer1);
+                }
+            }
+        });
+
+        battleButtonPlayer2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                battleCounterPlayer2.setVisible(false);
+                if(randomPlayer2 == 1) {
+                    battleOnePlayer2.setVisible(true);
+                    battleOnePlayer2.setBounds(470,400,250,250);
+                    layoutBattle.add(battleOnePlayer2);
+                } else if(randomPlayer2 == 2) {
+                    battleTwoPlayer2.setVisible(true);
+                    battleTwoPlayer2.setBounds(470,400,250,250);
+                    layoutBattle.add(battleTwoPlayer2);
+                } else if(randomPlayer2 == 3) {
+                    battleThreePlayer2.setVisible(true);
+                    battleThreePlayer2.setBounds(470,400,250,250);
+                    layoutBattle.add(battleThreePlayer2);
+                } else if(randomPlayer2 == 4) {
+                    battleFourPlayer2.setVisible(true);
+                    battleFourPlayer2.setBounds(470,400,250,250);
+                    layoutBattle.add(battleFourPlayer2);
+                } else if(randomPlayer2 == 5) {
+                    battleFivePlayer2.setVisible(true);
+                    battleFivePlayer2.setBounds(470,400,250,250);
+                    layoutBattle.add(battleFivePlayer2);
+                } else if(randomPlayer2 == 6) {
+                    battleSixPlayer2.setVisible(true);
+                    battleSixPlayer2.setBounds(470,400,250,250);
+                    layoutBattle.add(battleSixPlayer2);
+                }
+            }
+        });
+
+
+
+
+        layoutBattle.add(battlePlayer1);
+        layoutBattle.add(battlePlayer2);
+        //battlePlayer2 = new JLabel(player.get)
+
+        System.out.println("points1 : " + battlePointsPlayer1 + " points2: " + battlePointsPlayer2);
+
+    }
 
     @Override
     public void setSelection(Position position, boolean selection) {
         Component component = layoutMap.getComponent(position.x * 40 + position.y);
-
-        ((JButton)component).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        ((JButton)component).setBorder(BorderFactory.createLineBorder(new Color(179, 207, 184)));
     }
 
     @Override
     public void updateCell(Position position, CellItem cell) {
-        JButton btn = (JButton) layoutMap.getComponent(position.x * 40 + position.y);
+         JButton btn = (JButton) layoutMap.getComponent(position.x * 40 + position.y);
 
         btn.setIcon(cell != null ? cell.layoutImage() : null);
     }
@@ -387,7 +571,7 @@ public class Main extends JFrame implements MainContract.View {
     }
 
     public void showCurrentCityData(Player player) {
-        layoutTownData.setText("<html>" + "<b>" + "</b>" +"<b>" + player.getName() + "</b>" + "<b>" + "<br> "+ "Gold: " + "</b>" + String.valueOf(player.getGold())+ "<br>" + "<b>" + "Population: " + "</b>" + String.valueOf(player.getActualPopulation() + "</html>"));
+        layoutTownData.setText("<html>" + "<b>" + "</b>" +"<b>" + player.getName() + "</b>" + "<b>" + "<br> "+ "Gold: " + "</b>" + player.getGold() + "<br>" + "<b>" + "Population: " + "</b>" + String.valueOf(player.getActualPopulation() + " / " + String.valueOf(presenter.getCurrentPlayerPeopleStorage()) + "<br>" + "<b>" + "Born: " + "</b>" + presenter.populationBorn(player) + "<br>" + "<b>" + "Death: " + "</b>" + presenter.populationDeath(player) + "<br>" + "<b>" + "Tax: " + "</b>" + presenter.taxCalculator(player) + "</html>"));
         layoutTownData.repaint();
     }
 
@@ -396,8 +580,14 @@ public class Main extends JFrame implements MainContract.View {
         repaint();
     }
 
+    @Override
     public void showGameMessage(String text) {
         layoutGameMessage.setText(text);
+        System.out.println(text);
+    }
+
+    public void showCellData(String text) {
+        layoutCellData.setText(text);
     }
 
     @Override
@@ -409,14 +599,22 @@ public class Main extends JFrame implements MainContract.View {
     }
 
     @Override
+    public void highlightPlayer(List<Position> positions) {
+        for (Position position : positions) {
+            JButton btn = (JButton) layoutMap.getComponent(position.x * 40 + position.y);
+
+            btn.setBackground(Color.CYAN);
+        }
+    }
+
+    @Override
     public void highlightRange(Range range, Position center) {
         for (int i = range.topLeft.x; i <= range.bottomRight.x; i++) {
             for (int j = range.topLeft.y; j <= range.bottomRight.y; j++) {
-                if (center == null ||
-                        center.x == i || center.y == j) {
+                if (i > -3 && j > -3 && i < 40 && j < 40) {
                     int index = i * 40 + j;
                     ((JButton) layoutMap.getComponent(index))
-                            .setBorder(BorderFactory.createLineBorder(Color.green));
+                            .setBorder(BorderFactory.createLineBorder(new Color(179, 207, 184)));
                 }
             }
         }
@@ -426,8 +624,7 @@ public class Main extends JFrame implements MainContract.View {
     public void highlightTownHall(Range range, Position center, boolean isTable) {
         for (int i = range.topLeft.x; i <= range.bottomRight.x; i++) {
             for (int j = range.topLeft.y; j <= range.bottomRight.y; j++) {
-                if (center == null ||
-                        center.x == i || center.y == j) {
+                if (i > -5 && j > -5 && i < 40 && j < 40) {
                     int index = i * 40 + j;
                     ((JButton) layoutMap.getComponent(index))
                             .setBorder(BorderFactory.createLineBorder(new Color(73, 102,109)));
@@ -448,6 +645,12 @@ public class Main extends JFrame implements MainContract.View {
     public void highlightAttackableItem(Position position, boolean highlight) {
         JButton btn = (JButton) layoutMap.getComponent(position.x * 40 + position.y);
 
-        btn.setBackground(highlight ? Color.PINK : Color.LIGHT_GRAY);
+        btn.setBackground(highlight ? Color.PINK : new Color(228,228,228));
     }
+
+    private int random(int min, int max) {
+        int random = (int) (Math.random() * (max - min) + 1 + min);
+        return random;
+    }
+
 }

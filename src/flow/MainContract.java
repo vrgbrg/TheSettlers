@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface MainContract {
     interface View {
-        void showTable(CellItem[][] table);
+        void showMap(CellItem[][] table);
         void showTownTable(CellItem[][] townTable);
+        void showBattle(Player player, Player opponent, boolean isTable);
         void setSelection(Position position, boolean selection);
         void showSelectionCellData(Position position, boolean selection);
         void updateCell(Position position, CellItem cells);
@@ -21,9 +22,10 @@ public interface MainContract {
         void showCurrentCityData(Player player);
         void showCurrentPlayerRoundPoints(Player player);
         void showGameMessage(String text);
-
+        void showCellData(String text);
 
         void highlightTownHall(Range range, Position center, boolean isTable);
+        void highlightPlayer(List<Position> positions);
         void highlightRange(Range range, Position center);
         void highlightAttackableItem(Position position, boolean highlight);
         void removeHighlight();
@@ -33,7 +35,12 @@ public interface MainContract {
         void onTableItemClicked(Position position, boolean isTable);
         void init();
         void redrawTable();
+        int getCurrentPlayerPeopleStorage();
+        int populationBorn(Player player);
+        int populationDeath(Player player);
+        int taxCalculator(Player player);
         void skipPlayer();
+        Player getOpponentPlayer(Position position);
 
     }
 

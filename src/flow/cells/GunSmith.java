@@ -8,7 +8,7 @@ public class GunSmith extends CellItem {
     private int price;
     public GunSmith(Player owner) {
 
-        super(owner, "Fegyverkovács műhely", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
+        super(owner, "Gun Smith", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/gunsmith.png"));
         this.price = 300;
     }
 
@@ -18,13 +18,13 @@ public class GunSmith extends CellItem {
     }
 
     @Override
-    public int maxStep() {
-        return 0;
+    public boolean canMoveDiagonally() {
+        return false;
     }
 
     @Override
-    public boolean canMoveDiagonally() {
-        return false;
+    public int maxStep() {
+        return 0;
     }
 
     public int getPrice() {
@@ -34,5 +34,12 @@ public class GunSmith extends CellItem {
     @Override
     public int attackRange() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "GunSmith{" +
+                "price=" + price +
+                '}';
     }
 }

@@ -8,7 +8,7 @@ public class Bank extends CellItem {
     private int price;
     public Bank(Player owner) {
 
-        super(owner, "Bank", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/townhall.png"));
+        super(owner, "Bank", new ImageIcon("/Users/vrgbrg/FlowAcademy/Java/TheSettlers/src/resources/bank.png"));
         this.price = 700;
     }
 
@@ -18,13 +18,13 @@ public class Bank extends CellItem {
     }
 
     @Override
-    public int maxStep() {
-        return 0;
+    public boolean canMoveDiagonally() {
+        return false;
     }
 
     @Override
-    public boolean canMoveDiagonally() {
-        return false;
+    public int maxStep() {
+        return 0;
     }
 
     public int getPrice() {
@@ -34,5 +34,12 @@ public class Bank extends CellItem {
     @Override
     public int attackRange() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "price=" + price +
+                '}';
     }
 }

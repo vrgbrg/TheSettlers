@@ -1,6 +1,9 @@
 package flow;
 
-import flow.cells.CellItem;
+import flow.cells.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -8,7 +11,6 @@ public class Player {
     private int roundPoint;
     private int gold;
     private int actualPopulation;
-    private int maxPopulation;
     private CellItem[][] townTable;
 
     public Player(String name) {
@@ -37,8 +39,8 @@ public class Player {
         return roundPoint -= point;
     }
 
-    public double changeGold(double minus) {
-        return gold -= minus;
+    public int changeGold(int plus) {
+        return gold += plus;
     }
 
     public int getGold() {
@@ -55,10 +57,6 @@ public class Player {
 
     public int populationIncrease(int plus) {
         return actualPopulation += plus;
-    }
-
-    public int getMaxPopulation() {
-        return maxPopulation;
     }
 
     private int random(int min, int max) {
@@ -92,6 +90,7 @@ public class Player {
     public CellItem getTownHallCellItem(Position position) {
         return townTable[position.x][position.y];
     }
+
 
     @Override
     public String toString() {

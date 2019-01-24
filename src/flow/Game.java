@@ -1,8 +1,9 @@
 package flow;
 
-import flow.cells.CellItem;
-import flow.cells.TownHall;
+import flow.cells.*;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,12 +78,12 @@ public class Game {
         CellItem c = getCellItem(from);
 
         return c != null &&
-                (from.x == to.x || from.y == to.y) &&
+                (c.canMoveDiagonally() || from.x == to.x || from.y == to.y) &&
                 Math.abs(from.x - to.x) <= c.maxStep() &&
                 Math.abs(from.y - to.y) <= c.maxStep();
     }
 
-    public boolean isValidAttack(Position from, Position to) {
+    public boolean isValidAttack(Position from, Position to, boolean isTable) {
         CellItem c1 = getCellItem(from);
         CellItem c2 = getCellItem(to);
 
@@ -95,4 +96,25 @@ public class Game {
     public void removeItem(Position position) {
         table[position.x][position.y] = null;
     }
+
+
+    public List<Position> getCurrentPlayersItemPositions() {
+        List<Position> resultSoldier = new ArrayList<>();
+
+        Player currentPlayer = getCurrentPlayer();
+        for (int i = 0; i < 40; i++) {
+            for (int j = 0; j < 40; j++) {
+                Position position = new Position(i, j);
+
+                CellItem cellItem = getCellItem(position);
+                if (cellItem != null && cellItem instanceof Soldier && cellItem.getOwner().equals(currentPlayer)) {
+                    resultSoldier.add(position);
+                }
+            }
+        }
+
+        return resultSoldier;
+    }
+
+
 }
