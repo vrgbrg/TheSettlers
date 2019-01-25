@@ -1,90 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e565b66f-1a84-4a86-9b35-43b681c212cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_23_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheSettlers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TheSettlers.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$Presenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract$View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainContract.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/MainPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Position.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/Range.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Bank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/BarrackRoom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/CellItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/GunSmith.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/LivingQuarters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/Soldier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/SoldierLivingQuarters.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/TownHall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/flow/cells/TrainingRoom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/bank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/barrackroom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/bulb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/compass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/counter.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/gunsmith.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/livingq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/refresh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/soldier.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/soldierlivingq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/swords.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/townhall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/townhalltown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheSettlers/resources/trainingroom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/MainContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/MainPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Position.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/Range.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/Bank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/BarrackRoom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/CellItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/GunSmith.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/LivingQuarters.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/Soldier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/SoldierLivingQuarters.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/TownHall.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flow/cells/TrainingRoom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/bank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/barrackroom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/bulb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/compass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/counter.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/gunsmith.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/livingq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/refresh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/soldier.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/soldierlivingq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/swords.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/townhall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/townhalltown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/trainingroom.png" beforeDir="false" />
-    </list>
+    <list default="true" id="e565b66f-1a84-4a86-9b35-43b681c212cb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -208,8 +125,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/flow/MainPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="105" column="26" lean-forward="true" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+            <state relative-caret-position="293">
+              <caret line="402" column="17" selection-start-line="402" selection-start-column="17" selection-end-line="402" selection-end-column="17" />
               <folding>
                 <element signature="e#4731#4732#0" expanded="true" />
                 <element signature="e#4776#4777#0" expanded="true" />
@@ -341,8 +258,8 @@
         <option value="$PROJECT_DIR$/src/main/java/flow/Battle.java" />
         <option value="$PROJECT_DIR$/src/main/java/flow/MainContract.java" />
         <option value="$PROJECT_DIR$/src/main/java/flow/cells/Soldier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/flow/MainPresenter.java" />
         <option value="$PROJECT_DIR$/src/main/java/flow/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/flow/MainPresenter.java" />
       </list>
     </option>
   </component>
@@ -435,7 +352,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="palette&#9;ACTION&#9;ActivatePalette&#9;ToolWindow" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548424479893" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548424748964" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -961,8 +878,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/flow/MainPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="105" column="26" lean-forward="true" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+        <state relative-caret-position="293">
+          <caret line="402" column="17" selection-start-line="402" selection-start-column="17" selection-end-line="402" selection-end-column="17" />
           <folding>
             <element signature="e#4731#4732#0" expanded="true" />
             <element signature="e#4776#4777#0" expanded="true" />

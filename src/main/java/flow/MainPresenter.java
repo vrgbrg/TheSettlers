@@ -474,7 +474,7 @@ public class MainPresenter implements MainContract.Presenter {
         getCurrentPlayerPeopleStorage();
         view.showCurrentCityData(currentPlayer);
         view.showCurrentPlayerRoundPoints(currentPlayer);
-        System.out.println(townHallPosition);
+        // System.out.println(townHallPosition);
     }
 
 }
